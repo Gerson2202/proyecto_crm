@@ -32,6 +32,7 @@ class TicketFactory extends Factory
             'tipologia_id'=>$this->faker->randomElement(['3','2','1']),
             'peticion_id'=>$this->faker->randomElement(['3','2','1']),
             'medio_id'=>$this->faker->randomElement(['3','2','1']),
+            'mensaje'=>$this->faker->text($maxNbChars=15),
         ];
     }
 }

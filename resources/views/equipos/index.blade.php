@@ -56,6 +56,8 @@
              success: function(nuevo){
 
                  toastr.success("!!Material Agregado");
+                 $('#inputStock').val("");
+                 $('#inputName').val("");
                  tablaMateriales.ajax.reload();
 
 

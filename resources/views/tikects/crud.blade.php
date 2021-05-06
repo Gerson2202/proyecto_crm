@@ -77,12 +77,8 @@
                               let fecha = moment(info.created_at).format("YYYY-MM-DD")
                               $('#id').html(info.id);
                               $('.txtAsuntoShow').html(info.asunto);
-                              $('.txtClienteShow').html(info.cliente.nombre);
-                              if (info.comentario!=null) {
-                                $('.txtMensajeShow').html(info.comentario.contenido);
-                              } else {
-                                $('.txtMensajeShow').html("Comentario Eliminado");
-                              }
+                              $('.txtClienteShow').html(info.cliente.nombre);                              
+                              $('.txtMensajeShow').html(info.mensaje);                             
                                                             
                               $('.txtFechaShow').html(fecha);
                               $('#txtNombreShow').html(info.user_hecho.name);  

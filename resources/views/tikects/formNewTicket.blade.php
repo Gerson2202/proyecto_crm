@@ -77,12 +77,7 @@
               <div class="form-row">
                 <div class="col-md-12 mb-3">
                   <label for="exampleInputEmail1">Mensaje</label>
-                  <select name="txtMensaje" id="txtMensaje" class="form-control" style="width: 100%" required>
-                    <option value=""></option>
-                    @foreach ($comentarios as $comentario)
-                    <option value="{{$comentario->id}}">{{$comentario->nombre}}</option>
-                    @endforeach                                
-                  </select>                              
+                  <input type="text" name="txtMensaje" id="txtMensaje" class="form-control" style="width: 100%" required>                                               
                 </div>
               </div>
               <div class="modal-footer">

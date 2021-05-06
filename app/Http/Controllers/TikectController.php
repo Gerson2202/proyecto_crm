@@ -71,9 +71,9 @@ class TikectController extends Controller
             
           $Ticket->asunto                 =$request->txtAsunto;
           $Ticket->tipologia_id           =$request->txtTipologia;
-          $Ticket->peticion_id          =$request->txtPeticion;
+          $Ticket->peticion_id            =$request->txtPeticion;
           $Ticket->medio_id               =$request->txtMedio;
-          $Ticket->comentario_id                =$request->txtMensaje;
+          $Ticket->mensaje                =$request->txtMensaje;
           $Ticket->file                   =$url;
           $Ticket->cliente_id             =$request->txtNombreCliente;
           $Ticket->user_id                =$userId;          
@@ -91,7 +91,7 @@ class TikectController extends Controller
             $Ticket->tipologia_id           =$request->txtTipologia;
             $Ticket->peticion_id            =$request->txtPeticion;
             $Ticket->medio_id               =$request->txtMedio;
-            $Ticket->comentario_id          =$request->txtMensaje;            
+            $Ticket->mensaje                =$request->txtMensaje;            
             $Ticket->cliente_id             =$request->txtNombreCliente;
             $Ticket->user_id                =$userId;          
             $Ticket->project_id             = 1;

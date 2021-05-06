@@ -20,13 +20,13 @@ class CreateTicketsTable extends Migration
                
             $table->boolean('active')->default(1);
             // $table->string('file')->nullable();
-
+            $table->string('mensaje');
             $table->unsignedBigInteger('user_id')->nullable();//quien lo creo
             $table->unsignedBigInteger('cliente_id')->nullable();           //cliente q se asigna 
             $table->unsignedBigInteger('project_id')->default(1);   //projecto perteneciente
             $table->unsignedBigInteger('level_id');    //level perteneciente                                                                   
             $table->unsignedBigInteger('support_id')->nullable();     //user asiganado                                                                                                               
-            $table->unsignedBigInteger('comentario_id')->nullable();  // mensajes cambio a comentario   
+            // $table->unsignedBigInteger('comentario_id')->nullable();  // mensajes cambio a comentario   
             //nuevas
             $table->unsignedBigInteger('tipologia_id')->nullable(); //tabla tipologia
             $table->unsignedBigInteger('peticion_id')->nullable();    //tabla peticiones 
@@ -63,9 +63,9 @@ class CreateTicketsTable extends Migration
             ->references('id')->on('medio_atencions');
             $table->timestamps();
 
-            $table->foreign('comentario_id')//cliete q se asigna
-            ->references('id')
-            ->on('comentarios')->onDelete('set null');
+            // $table->foreign('comentario_id')//cliete q se asigna
+            // ->references('id')
+            // ->on('comentarios')->onDelete('set null');
             
         });
     }

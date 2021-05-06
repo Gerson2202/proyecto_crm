@@ -279,12 +279,12 @@
                     <div class="form-row">                   
                       <div class="col-md-7 mb-3">
                         <label for="validationServer01">Nombre</label>
-                        <input type="text"  name="nombre" class="form-control" id="nombre" placeholder="nombre de material"  required>
+                        <input type="text"  name="nombre" class="form-control" id="inputName" placeholder="nombre de material"  required>
                         <div class="valid-feedback"></div>
                       </div>
                       <div class="col-md-5 mb-3">
                         <label for="validationServer01">Stock</label>
-                        <input type="number" min="1"  name="stock" placeholder="cantidad" class="form-control"  required>
+                        <input type="number" min="1"  name="stock" placeholder="cantidad" id="inputStock" class="form-control"  required>
                         <div class="valid-feedback"></div>
                       </div>
                     </div>
