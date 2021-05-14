@@ -64,11 +64,19 @@ class User extends Authenticatable
     }
 
     public function mensajes()
-        {
+    {
         return $this->hasMany(Mensaje::class);
-        }
+    }
 
-        public function programations(){
+    public function programations()
+    {
             return $this->belongsToMany('App\Models\Programation');
-        }
+     }
+
+    //  uno a uno
+     public function cliente()
+     {
+         return $this->hasOne('App\Models\Cliente');
+     }
+       
 }

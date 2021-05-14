@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cliente;
 use App\Models\Equipo;
 use App\Models\MaterialUser;
 use App\Models\Project;
@@ -69,14 +70,15 @@ class UserController extends Controller
     public function show($id)
     {   
        
-        $user=User::findOrFail($id)->load('roles')->load('permissions');
+        $user=User::findOrFail($id)->load('roles')->load('permissions')->load('cliente');
         $proyectos=Project::all();
         $roles=Role::all();
         $permisos=Permission::all();
         $materiales=MaterialUser::where('user_id',$id)->get();
         $equipos=Equipo::where('user_id',$id)->get();
+        $clientes=Cliente::all();
         // return $materiales;
-        return view('usuarios.show',compact('user','proyectos','roles','permisos','materiales','equipos'));
+        return view('usuarios.show',compact('user','proyectos','roles','permisos','materiales','equipos','clientes'));
     }
 
     public function edit($id)

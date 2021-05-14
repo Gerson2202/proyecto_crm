@@ -1,5 +1,15 @@
 <div class="container">
     <br>
+    {{-- FORMULARIO EXECEL --}}
+    <form action="{{route('clienteExecel')}}" method="POST" enctype="multipart/form-data">
+      @csrf
+      <div class="row">
+         <input class="form-control mx-1" type="file" name="file" style="width: 50%" required>
+      <button class="btn btn-sm btn-info"> Importar datos</button>
+      </div>
+     
+    </form>
+    {{-- FORMULARIO NORMAL --}}
     <form action="{{route('clientesStore')}}" method="POST">
       @csrf
       <div class="row">

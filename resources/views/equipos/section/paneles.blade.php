@@ -10,7 +10,7 @@
         </div>
       </div>
       <div class="card-body">
-        <p class="card-text">Aca podras registrar tus facturas de equipos u otros articulos.</p>
+        <p class="card-text">Aca podras registrar tus facturas .</p>
         <!-- /.d-flex -->
         <div class="d-flex justify-content-between align-items-center border-bottom mb-3">
           <p class="text-warning text-xl">
@@ -81,7 +81,7 @@
                   </div>
                   <div class="modal-footer">
                     {{-- <button class="btn btn-default text-ligth" id="btnAgregar" type="submit" style="background: #3333cc3">Agregar</button> --}}
-                    <a class="btn btn-default text-ligth" id="btnAgregar" type="submit" style="background: #3333cc3" href="#">Agregar</a>
+                    <a class="btn btn-default text-ligth" id="btnAgregarFactura" type="submit" style="background: #3333cc3" href="#">Agregar</a>
                     
 
                     

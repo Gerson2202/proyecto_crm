@@ -24,16 +24,15 @@
     <section class="content">
 
       <!-- Default box -->
-      <div class="card">
+      
         {{-- <div class="card-header">
           <h3 class="card-title">Lista </h3>
         </div> --}}
-        <div class="card-body">
+        
             <div class="row">
                @include('tikects.section-show.contenido')
 
-            </div>            
-        </div>
+          
       
         <!-- /.card-body -->
       </div>

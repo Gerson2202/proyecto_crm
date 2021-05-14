@@ -15,7 +15,7 @@ class EquipoSeeder extends Seeder
     public function run()
     {
         $root= new Equipo();
-        $root-> nombre ="ROUTER ac amarillo";
+        $root-> tipoequipo->id ="1";
         $root-> codigo ="0011";
         
         $root-> serial ="00111DA";
@@ -29,7 +29,7 @@ class EquipoSeeder extends Seeder
         $root->save();
 
         $root= new Equipo();
-        $root-> nombre ="SWITCH";
+        $root-> tipoequipo->id ="1";
         $root-> codigo ="0022";
         
         $root-> serial ="0015511DA";
@@ -43,7 +43,7 @@ class EquipoSeeder extends Seeder
         $root->save();
 
         $root= new Equipo();
-        $root-> nombre ="ROUTER TENDA BLANCO";
+        $root-> tipoequipo->id ="1";
         $root-> codigo ="0033";
         
         $root-> serial ="00144311DA";
@@ -57,7 +57,7 @@ class EquipoSeeder extends Seeder
         $root->save();
 
         $root= new Equipo();
-        $root-> nombre ="ROUTER AC NEGRO";
+        $root-> tipoequipo->id ="1";
         $root-> codigo ="0044";
         
         $root-> serial ="001s311DA";
@@ -71,7 +71,7 @@ class EquipoSeeder extends Seeder
         $root->save();
 
         $root= new Equipo();
-        $root-> nombre ="ANTENA PLATO DE 30 CM";
+        $root-> tipoequipo->id ="1";
         $root-> codigo ="003311";
         
         $root-> serial ="0011DA1DA";
@@ -85,7 +85,7 @@ class EquipoSeeder extends Seeder
         $root->save();
 
         $root= new Equipo();
-        $root-> nombre ="ANTENA DTD RURAL";
+        $root-> tipoequipo->id ="1";
         $root-> codigo ="110011";
         
         $root-> serial ="0011DdA1DA";
@@ -99,7 +99,7 @@ class EquipoSeeder extends Seeder
         $root->save();
 
         $root= new Equipo();
-        $root-> nombre ="ANTENA DTD CORTA";
+        $root-> tipoequipo->id ="1";
         $root-> codigo ="0101010";
         
         $root-> serial ="0011fDA1DA";

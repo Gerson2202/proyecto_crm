@@ -15,7 +15,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Bienvenido</h1>
+            <h1><i class="fas fa-check-double"></i>Bienvenido</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -93,20 +93,20 @@
           <!-- ./col -->
         </div>
         <div class="row">
-          <div class="col-lg-7 col-12 " >
+          <div class="col-lg-12 col-12 ml-auto " >
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">
                   <i class="fas fa-chart-pie mr-1"></i>
-                  Sales
+                  Estadistica de clientes
                 </h3>
                 <div class="card-tools">
                   <ul class="nav nav-pills ml-auto">
                     <li class="nav-item">
                       <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Area</a>
                     </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#sales-chart" data-toggle="tab">Donut</a>
+                    {{-- <li class="nav-item">
+                      <a class="nav-link" href="#sales-chart" data-toggle="tab">Donut</a> --}}
                     </li>
                   </ul>
                 </div>
@@ -127,7 +127,7 @@
             <!-- /.card -->
   
           </div>
-          <div class="col-lg-5 col-12">
+          {{-- <div class="col-lg-5 col-12">
             <!-- Map card -->
             <div class="card bg-gradient-primary">
               <div class="card-header border-0">
@@ -179,7 +179,7 @@
               </div>
             </div>
 
-        </div>
+          </div> --}}
   
         </div>
       </div>

@@ -15,7 +15,7 @@ class CreateEquiposTable extends Migration
     {
         Schema::create('equipos', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre')->nullable();
+            $table->unsignedBigInteger('tipoequipo_id')->nullable(); //TIPO DE EQUIPO
             $table->string('codigo')->unique();
             
             $table->string('serial')->nullable()->unique(); 
@@ -25,10 +25,10 @@ class CreateEquiposTable extends Migration
             $table->string('estado')->nullable();
             $table->longText('observacion')->nullable();
             $table->longText('destino');           
-            $table->date('fecha');            
+            $table->date('fecha')->nullable();            
             $table->integer('factura_id')->unsigned()->nullable();
             $table->foreign('factura_id')->references('id')->on('facturas')->onDelete('set null');           
-            $table->string('img')->nullable();
+            // $table->string('img')->nullable();
 
             $table->string('ip')->nullable();
             $table->string('winbox')->nullable();
@@ -46,6 +46,7 @@ class CreateEquiposTable extends Migration
 
             $table->foreign('nodo_id')->references('id')->on('nodos')->onDelete('set null');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
+            $table->foreign('tipoequipo_id')->references('id')->on('tipoequipos')->onDelete('set null');
             $table->foreign('sede_id')
             ->references('id')
             ->on('sedes')

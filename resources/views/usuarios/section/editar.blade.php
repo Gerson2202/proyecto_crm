@@ -29,8 +29,34 @@
     </form>
     <hr>
     <!-- /.card -->      
-     <h5 class="text-primary">Asiganar Proyecto</h5 class="text-primary">
-     <hr>
+     @if ($user->cliente!=null)
+     
+     Este usuario esta enlazado al cliente <h5 class="text-primary"><a href="{{route('clientesShow',$user->cliente->id)}}">{{$user->cliente->nombre}}</a></h5>      
+      @else
+      <h5 class="text-primary">Enlazar usuario a cliente</h5> 
+     @endif
+      <hr>
+     <div class="row">
+       <form action="" method="POST" id="formEnlazarcliente">
+        @csrf
+          <div class="form-group col-12">
+              <label for="exampleSelectBorder">Clientes</label>
+              <input type="hidden" name="user_id" value="{{$user->id}}">
+              <select class="custom-select form-control-border" name="cliente_id" id="selectClientes" style="width: 100%">
+                  <option value=""> </option>
+                  @foreach ($clientes as $item)
+                  <option value="{{$item->id}}">{{$item->nombre}}</option>
+                  @endforeach                      
+              </select>
+          </div>    
+          <div class="form-group col-12">
+              <a href="#" class="btn btn-info btn-block" id="btnEnlazar">Enlazar</a>
+          </div>  
+       </form>
+           
+     </div>  
+
+     {{-- <hr>
      <div class="row">
       <div class="form-group col-6">
           <label for="exampleSelectBorder">Proyectos</label>
@@ -50,6 +76,6 @@
       <div class="form-group col-12">
           <a href="#" class="btn btn-info btn-block" id="btnAsignar">Asignar</a>
       </div>       
-     </div>                                 
+     </div>                                  --}}
   </div>
 

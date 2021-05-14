@@ -12,6 +12,9 @@ use App\Models\User;
 use Illuminate\Contracts\Cache\Store;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Imports\EquipoImport;
+use App\Models\Tipoequipo;
+use Maatwebsite\Excel\Facades\Excel;
 
 class EquipoController extends Controller
 {
@@ -55,7 +58,8 @@ class EquipoController extends Controller
 
     {
         $facturas=Factura::all();
-        return view('equipos.create',compact('facturas'));
+        $tipos=Tipoequipo::all();
+        return view('equipos.create',compact('facturas','tipos'));
     }
 
     /**
@@ -87,7 +91,7 @@ class EquipoController extends Controller
         // $url=Storage::url($fotos);
 
         $nuevo=Equipo::create([
-            'nombre'=>$request->selectNombre,
+            'tipoequipo'=>$request->selectNombre,
             'codigo'=>$request->codigo,
             
             'serial'=>$request->serial,
@@ -119,32 +123,22 @@ class EquipoController extends Controller
         $clientes=Cliente::all();
         $nodos=Nodo::all();
         $sedes=Sede::all();
-        return view('equipos.show',compact('equipo','facturas','clientes','nodos','sedes'));
+        $tipos=Tipoequipo::all();
+        return view('equipos.show',compact('equipo','facturas','clientes','nodos','sedes','tipos'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Equipo  $equipo
-     * @return \Illuminate\Http\Response
-     */
+    
     public function edit(Equipo $equipo)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Equipo  $equipo
-     * @return \Illuminate\Http\Response
-     */
+   
     public function update(Request $request, Equipo $equipo,$id)
     {
         
        $nuevo=Equipo::findOrFail($id);
-       $nuevo->nombre=$request->nombre;
+       $nuevo->tipoequipo_id=$request->tipoequipo_id;
        $nuevo->codigo=$request->codigo;
        
        $nuevo->serial=$request->serial;
@@ -153,21 +147,12 @@ class EquipoController extends Controller
        $nuevo->observacion=$request->observacion;
        $nuevo->destino=$request->destino;
        $nuevo->fecha=$nuevo->fecha;
-       $nuevo->factura_id=$request->factura_id;
-       $nuevo->img=$nuevo->img;
-       if ($request->destino="Bodega") {
-           $nuevo->user_id=null;
-       }        
+       $nuevo->factura_id=$request->factura_id;       
        $nuevo->save();
        return  redirect("Crm/Inventario/equipos/$id")->with('mensaje','Cambios Guardados!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Equipo  $equipo
-     * @return \Illuminate\Http\Response
-     */
+   
     public function destroy(Equipo $equipo)
     {
         //
@@ -218,5 +203,21 @@ class EquipoController extends Controller
         return redirect()->back()->with('mensaje',"Asignacion Exitosa");
 
     }
+
+     // IMPORTAR EXECEL
+    
+     public function equiposexecel(Request $request)
+     {
+         $file=$request->file('file');
+         Excel::import(new EquipoImport, $file);
+         return redirect()->route('equiposIndex')->with('mensaje','Datos Guardados');
+         
+     }
+
+     public function listarAjax()
+    {
+        $equipos=Equipo::all();
+        return datatables()->of($equipos)->toJson();
+     }
 
 }

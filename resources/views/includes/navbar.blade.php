@@ -4,9 +4,9 @@
     <li class="nav-item ">
       <a class="nav-link text-light" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
     </li>
-    <li class="nav-item d-none d-sm-inline-block" id="color">
+    {{-- <li class="nav-item d-none d-sm-inline-block" id="color">
       <a   class="nav-link btn btn-outline mx-1 text-light " href="{{route('dashboard')}}">Principal</a>
-    </li>
+    </li> --}}
     <style>
       
       #color{

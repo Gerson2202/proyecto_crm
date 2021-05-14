@@ -139,7 +139,7 @@
     </section>
     <!-- /.content -->
   </div>
-  <script src="{{asset('assets/vendor/jquery/jquery.min.js')}}"></script>
+  @include('includes.pluggin')
   {{-- EDICION DE PROYECTOS --}}
   <script>   
 
@@ -169,6 +169,34 @@
          }       
        
           
+  </script>
+  {{-- ENLAZAR USUARAIO A CLIENTE --}}
+  <script>
+    $("#btnEnlazar").on('click', function ()
+     {
+      var datosP = new FormData(document.getElementById("formEnlazarcliente")); 
+      $.ajax(
+          {
+            url: "/crm/cliente/enlazarUser", 
+            type: "POST",
+            data: datosP,
+            processData: false,   //tell jQuery not to process the data
+            contentType: false,    //tell jQuery not to set contentType
+              //a continuacion refrescar la tabla despues de un evento
+             success: function(response){
+               alert('Ticket Guardado!');            
+               
+              }
+         })   
+    });
+
+    // SELECT 2
+    $("#selectClientes").select2({
+         placeholder: "selecciona el cliente",
+         theme: "classic",                        
+                          
+                      
+     });
   </script>
     
 @endsection

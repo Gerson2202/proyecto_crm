@@ -25,7 +25,12 @@
           {{-- card1 --}}
           <div class="card">
             <div class="card-header text-info"><i class="fas fa fa-edit"></i> Datos Generales
+              <div class="card-tools">
+                <a href="#" class="btn btn-tool"  data-toggle="modal" data-target="#modal-Tipos"  title="Agregar Tipos">
+                  <i class="fas fa-wifi">Tipos</i></a>           
+              </div>
             </div>
+            @include('equipos.section.tipoEquipo')
             <div class="card-body">
             <form action="{{route('equiposStore')}}" method="POST" enctype="multipart/form-data">              
                 @csrf
@@ -35,9 +40,10 @@
                     <label>Tipo</label>
                       <select name="selectNombre" id="selectNombre" class="form-control" required>
                          <option value=""></option>
-                        <option value="antena" {{old('selectNombre')=='antena'? 'selected': ''}}>Antena</option>
-                        <option value="router" {{old('selectNombre')=='router'? 'selected': ''}}>Router</option>
-                        <option value="switch" {{old('selectNombre')=='switch'? 'selected': ''}}>Switch</option>                  
+                         @foreach ($tipos as $item)
+                             <option value="{{$item->id}}" {{old('selectNombre')=='antena'? 'selected': ''}}>{{$item->nombre}}</option>  
+                         @endforeach
+                                     
                       </select>
                       <div class="valid-feedback"> </div>
                   </div>
@@ -149,7 +155,7 @@
         theme: "classic",
         
         });
-        // DESAHBILITAR INPUTS
+        // DESAHBILITAR INPUTS PARA TIPO ANTENA 
       $('#selectNombre').on('change', selectNombre); 
       function selectNombre() 
       {
@@ -170,6 +176,91 @@
           } 
       };   
    </script> 
+  {{-- CRUD TIPOS --}}
+   <script>
+      $(document).on("click","#btnAgregarTipo",function()  
+      {
+        var datosP = new FormData(document.getElementById("formTipo")); 
+        $.ajax(
+            {
+              url: "/Crm/inventario/tipo/store", 
+              type: "POST",
+              data: datosP,
+              processData: false,   //tell jQuery not to process the data
+              contentType: false,    //tell jQuery not to set contentType
+                //a continuacion refrescar la tabla despues de un evento
+              success: function(response){
+                toastr.success("Tipo Gurdado");           
+                tablaTipos.ajax.reload();
+                }
+          })           
+
+
+      })
+
+   </script>
+
+   <script>
+
+    let tablaTipos=$('#tablaTipos').DataTable({
+       "ajax": "{{route('tipoListar')}}",
+       "bPaginate": true, "bFilter": false, "bInfo": false,
+       "pageLength" : 5,
+       "columns": [
+           {data: 'nombre'},
+           {data: 'id'},
+       ],
+       responsive:true,
+       autoWidth: false,
+       "order": [[ 0, 'asc' ], [ 1, 'asc' ]],
+       "language":
+           {
+               "lengthMenu": "Mostrar _MENU_ Registros",
+               "zeroRecords": "Obteniendo datos....",
+               "info":"Pagina _PAGE_ de _PAGES_",
+               "infoEmpty": "No records available",
+               "infoFiltered": "(filtrado de  _MAX_ registros totales)",
+               "sSearch": "Buscar:",
+               "oPaginate": {
+                 "sFirst": "Primero",
+                 "sLast": "Ultimo",
+                 "sNext": "Siguiente",
+                 "sPrevious": "Anterior"
+           },
+           "sProcessing": "Procesando...",
+       },
+       "columnDefs": [
+                       {
+                          "targets":1,
+                            "data": "link",
+                            "render": function ( data, type, row, meta ) {
+                              return ' <a href="#" onclick="eliminarTipo('+data+')" class="btn btn-sm btn-danger text-light"><i class="fas fa-trash-alt">  </i></a> ';
+                         }
+                      }],
+   
+   
+       });
+   
+   // ELIMINAR METRIAL
+       function eliminarTipo(data)
+       {
+         $.ajax(
+             {
+               url: "/Crm/inventario/tipo/eliminar/"+data,
+               processData: false,   //tell jQuery not to process the data
+               contentType: false,    //tell jQuery not to set contentType
+               success: function(salida){
+                toastr.success("Tipo eliminado");
+                tablaTipos.ajax.reload();
+   
+   
+   
+                },
+            })
+       }; 
+         
+   
+   </script>
   @error('mac')
     <script>
       toastr.error("!!La Mac de este equipos Ya esta Registrada!!");

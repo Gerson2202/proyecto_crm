@@ -34,14 +34,18 @@
               </div>
             </div>
             <div class="col-12 col-sm-6">
-              <h3 class="my-3">{{$equipo->nombre}}</h3>
-              <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terr.</p>
+              @if ($equipo->tipoequipo!=null)
+              <h3 class="my-3">{{$equipo->tipoequipo->nombre}}</h3>
+              @else
+              <h3 class="my-3">sin tipo</h3>
+              @endif
+              
+              <p></p>
 
               <hr>
               <h4>Caracteristicas</h4>
               <div class="bg-light py-2 px-3 mt-4">
                 <h4 class="mt-0">
-                 
                   <small >Codigo: <small class="text-info">{{$equipo->codigo}}</small> </small>
                   <br>
                  
@@ -147,10 +151,22 @@
                 <form action="{{route('equipoUpdaate',$equipo->id)}}" method="POST" enctype="multipart/form-data" >
                     @csrf
                     <div class="form-row">
-                      <div class="col-md-6 mb-3">
-                        <label for="validationServer01">Nombre </label>
-                        <input type="text" name="nombre" class="form-control" value="{{old('nombre',$equipo->nombre)}}" id="validationServer0d"  required>
-                        <div class="valid-feedback"> </div>
+                      <div class="form-group col-md-6">
+                        <label>Tipo</label>
+                          <select name="tipoequipo_id" id="nombre" class="form-control" required>
+                            @if ($equipo->tipoequipo!=null)
+                            <option value="{{old('estado',$equipo->tipoequipo_id)}}">{{old('estado',$equipo->tipoequipo->nombre)}}</option>
+
+                              @else
+                              <option value=""></option>
+
+                              @endif
+                             @foreach ($tipos as $item)
+                                 <option value="{{$item->id}}">{{$item->nombre}}</option>  
+                             @endforeach
+                                         
+                          </select>
+                          <div class="valid-feedback"> </div>
                       </div>
                       
                       <div class="col-md-6 mb-3">

@@ -100,24 +100,25 @@
                 </span>
               </div>
             </form>
+            <hr>
+            <div class="row">
+              <div class="col-4">
+                <strong class="text-primary">Comentarios Rapidos</strong>
+              </div>
+              <div class="col-8">
+                <select name="" class="form-control" style="width: 50%" id="selectComentario">
+                  <option value=""></option>
+              @foreach ($comentarios as $item)
+              <option value="{{$item->contenido}}">{{$item->nombre}}</option>
+              @endforeach
+              
+            </select>
+              </div>
+            </div>
           </div>
       </div>
  </div>
- <hr>
- <div class="row">
-   <div class="col-4">
-     <h5>Comentarios</h5>
-   </div>
-   <div class="col-8">
-     <select name="" class="form-control" style="width: 50%" id="selectComentario">
-      <option value=""></option>
-   @foreach ($comentarios as $item)
-   <option value="{{$item->contenido}}">{{$item->nombre}}</option>
-   @endforeach
-  
- </select>
-   </div>
- </div>
+ 
  
  
 </div>

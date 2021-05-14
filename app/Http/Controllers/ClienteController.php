@@ -12,6 +12,9 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\ClientesImport;
+use App\Models\User;
 
 class ClienteController extends Controller
 {
@@ -53,6 +56,7 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
+        
         $request->validate([
             'ced'=>'unique:clientes',
             'correo'=>'unique:clientes'
@@ -177,5 +181,25 @@ class ClienteController extends Controller
         ClientePlan::where('cliente_id',$idCliente)->where('plan_id',$idPlan)->delete();
         return redirect()->route('clientesShow',$idCliente)->with('mensaje','Plan descartado');
         
+    }
+    // IMPORTAR EXECEL
+    
+    public function clienteExecel(Request $request)
+    {
+       
+
+        $file=$request->file('file');
+        Excel::import(new ClientesImport, $file);
+        return redirect()->route('clientesIndex')->with('mensaje','Datos Guardados');
+        
+    }
+
+    // ENLAZAR USER
+    public function enlazarUser(Request $request) 
+    {
+        $cliente=Cliente::findOrFail($request->cliente_id);
+        $cliente->user_id=$request->user_id;
+        $cliente->save();
+        return response(true);
     }
 }

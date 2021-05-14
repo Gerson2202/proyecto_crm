@@ -23,8 +23,8 @@ class CreateClientesTable extends Migration
             $table->string('municipio');
             $table->string('calle');
             $table->integer('estrato');
-            $table->date('fecha_inicio');
-            $table->date('fecha_final');
+            $table->date('fecha_inicio')->nullable();
+            $table->date('fecha_final')->nullable();
             $table->string('tipo_servicio');
             // $table->string('cant_megas');
             $table->string('reuso')->nullable();
@@ -32,7 +32,8 @@ class CreateClientesTable extends Migration
             $table->string('canon');
             $table->string('estado');
             $table->string('documento')->nullable();
-
+            $table->unsignedBigInteger('user_id')->nullable()->unique();
+             $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
             $table->softDeletes();
             $table->timestamps();
         });

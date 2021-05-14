@@ -27,7 +27,21 @@
         <div class="card-header card-blue card-outline" style="background: white" >
           <h3 class="card-title text-"><i class="fas fa-table"></i> Lista de Equipos</h3>
         </div>
-        <div class="card-body">      
+        <div class="card-body">  
+              
+           {{-- FORMULARIO EXECEL --}}
+          <form action="{{route('equiposexecel')}}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="row">
+              <div class="custom-file mx-1" style="width: 50%" >
+                <input name="file" type="file" class="custom-file-input"  required>
+                <label name="file" class="custom-file-label" for="">Importar desde Excel</label>
+              </div>
+            <button class="btn btn-sm btn-info"> Importar datos</button>
+            </div>           
+          
+          </form>
+          <hr>
           <TAble class="table table-striped table-bordered" id="equipos">
             <thead>
                 <tr>
@@ -46,7 +60,11 @@
           
                     <tr>
                     <th scope="row">{{$item->id}}</th>
-                    <td><a href="{{route('equipoShow',$item->id)}}" class="btn btn-default"> {{$item->nombre}}</a>
+                    <td><a href="{{route('equipoShow',$item->id)}}" class="btn btn-default"> @if ($item->tipoequipo!=null)
+                      {{$item->tipoequipo->nombre}}
+                    @else
+                    Sin Tipo
+                    @endif</a>
                       </td>
                       <td>{{$item->codigo}}</td>
                       <td>{{$item->serial}}</td>

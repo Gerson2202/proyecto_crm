@@ -31,6 +31,7 @@ use App\Http\Controllers\NodoController;
 use App\Http\Controllers\ProgramationController;
 use App\Http\Controllers\SalidaEquipoController;
 use App\Http\Controllers\SalidaTecnicoController;
+use App\Http\Controllers\TipoequipoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,12 +53,13 @@ Route::get('/', function () {
 //     return view('panel.crm');
 // })->name('crm');
 // Route::middleware(['auth:sanctum', 'verified'])->get('/CRM/programcion', function () {
-//     return view('Panel.programacion');
+//     return view('Panel.programacion');   
 // })->name('programacionVista');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
 
 
 // HOME
@@ -80,6 +82,8 @@ Route::middleware(['auth:sanctum','verified'])->post('/Crm/Clientes/insert/{id}'
 Route::middleware(['auth:sanctum','verified'])->get('/Crm/Clientes/down/{id}', [ClienteController::class,'downloadFile'])->name('downFile');
 Route::middleware(['auth:sanctum','verified'])->get('/Crm/Clientes/listar', [ClienteController::class,'listar'])->name('clientesListar');
 Route::middleware(['auth:sanctum','verified'])->delete('/Crm/Clientes/quitarPlan/{id}', [ClienteController::class,'quitarPlan'])->name('clienteQuitarPlan');
+Route::middleware(['auth:sanctum','verified'])->post('/Crm/Clientes/execel', [ClienteController::class,'clienteExecel'])->name('clienteExecel');
+Route::middleware(['auth:sanctum','verified'])->post('/crm/cliente/enlazarUser', [ClienteController::class,'enlazarUser'])->name('enlazarUser');
 
 // END TUTAS DE CLIENTES
 
@@ -123,9 +127,13 @@ Route::middleware(['auth:sanctum','verified'])->post('Crm/Inventario/equipos/{id
 Route::middleware(['auth:sanctum','verified'])->post('Crm/Inventario/equipos/asignar/{id}', [EquipoController::class,'equipoAsignar'])->name('equipoAsignar');
 
 Route::middleware(['auth:sanctum','verified'])->post('Crm/Inventario/equipos//asignarSede/{id}', [EquipoController::class,'equipoAsignarSede'])->name('equipoAsignarSede');
+Route::middleware(['auth:sanctum','verified'])->post('Crm/Inventario/equiposexecel', [EquipoController::class,'equiposexecel'])->name('equiposexecel');
+// RUTA DE TIPO DE EQUIPO
+Route::middleware(['auth:sanctum','verified'])->post('/Crm/inventario/tipo/store', [TipoequipoController::class,'store'])->name('tipoStore');
+Route::middleware(['auth:sanctum','verified'])->get('/Crm/inventario/tipo/listar', [TipoequipoController::class,'listar'])->name('tipoListar');
+Route::middleware(['auth:sanctum','verified'])->get('/Crm/inventario/tipo/eliminar/{id}', [TipoequipoController::class,'destroy'])->name('tipoEliminar');
 
-
-// Facturas
+// FACTURAS
 Route::middleware(['auth:sanctum','verified'])->get('/Crm/Factura/list', [FacturaController::class,'listFacturas'])->name('listFacturas');
 Route::middleware(['auth:sanctum','verified'])->post('/Crm/Factura/create', [FacturaController::class,'store'])->name('storeFactura');
 Route::middleware(['auth:sanctum','verified'])->get('/Crm/Factura/down/{id}', [FacturaController::class,'downloadFile'])->name('facturaDown');
@@ -146,7 +154,7 @@ Route::middleware(['auth:sanctum','verified'])->get('/Crm/Inventario/eliminarMat
 // Consultar id de material
 Route::middleware(['auth:sanctum','verified'])->get('/Crm/Inventario/consultaIdmaterial/{id}', [SalidaController::class,'consultaIdmaterial'])->name('consultaIdmaterial');
 
-//tecnicos
+//TECNICOS
 //salidaTecnicoContoller es para el acta de actividad de tecnico 
 Route::middleware(['auth:sanctum','verified'])->get('/Crm/tecnico/index', [TecnicoController::class,'index'])->name('tecnicoIndex');
 Route::middleware(['auth:sanctum','verified'])->post('/Crm/tecnico/store', [TecnicoController::class,'store'])->name('storeActaSalida');
@@ -160,7 +168,7 @@ Route::middleware(['auth:sanctum','verified'])->post('/Crm/tecnico/agregarMateri
 Route::middleware(['auth:sanctum','verified'])->get('/Crm/tecnico/actaShow/listaMateriales/{id}', [TecnicoController::class,'listarMateriales'])->name('listarMateriales');
 Route::middleware(['auth:sanctum','verified'])->post('/Crm/tecnico/prestarEquipo', [TecnicoController::class,'prestarEquipo'])->name('prestarEquipo');
 
-// Programacion
+// PROGRAMACION
 
 Route::middleware(['auth:sanctum','verified'])->get('Crm/programacion/index', [ProgramationController::class,'index'])->name('programacionIndex');
 Route::middleware(['auth:sanctum','verified'])->post('/programacion/guardar', [ProgramationController::class,'store'])->name('programacionStore');

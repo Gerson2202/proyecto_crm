@@ -7,7 +7,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Administracion De Inventario</h1>
+          <h1><i class="fas fa-cogs"></i> Administracion De Inventario</h1>
 
         </div>
         <div class="col-sm-6">
@@ -133,6 +133,45 @@
  {{-- BUSCAR EQUIPSO --}}
 
  <script>
+
+  //  CRUD FACTURA
+
+  // STORE
+  $('#btnAgregarFactura').click(function(){
+  
+      var datos = new FormData(document.getElementById("formFactura"));
+      $.ajax(
+          {
+            url: "/Crm/Factura/create",
+            type: "POST",
+            data: datos,
+            //  headers: {
+            //     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            // },
+            processData: false,   //tell jQuery not to process the data
+            contentType: false,    //tell jQuery not to set contentType
+              //a continuacion refrescar la tabla despues de un evento
+                 error: function(salida){
+                toastr.warning("!! Llenar todos los campos o intenta cambiar el codigo!!");
+                let error=salida.responseJSON.errors.documento;
+                if (error!=null) {
+                  toastr.error("!!El codigo ya existe,Intenta con otro!!");
+                   }
+                 },
+                success: function(salida){
+                 limpiarFormFactura();
+                 $('#modalFactura').modal('hide');
+                  toastr.success("!!Factura Guardada!!");
+                   // // solucion al no cerrarse
+                  if ($('.modal-backdrop').is(":visible"))
+                   {$('body').removeClass('modal-open'); $('.modal-backdrop').remove();
+                   } ;
+
+
+                },
+         })
+  });
+
 
    $("#equiposearch").select2({
      placeholder: "selecciona Los Equipos",

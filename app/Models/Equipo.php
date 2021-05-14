@@ -32,6 +32,10 @@ class Equipo extends Model
     {
         return $this->belongsTo('App\Models\Sede');
     }
+    public function tipoequipo()
+    {
+        return $this->belongsTo('App\Models\Tipoequipo');
+    }
     // public function actaEquipo()
     // {
     //     return $this->hasMany('App\Models\ActaEquipo');

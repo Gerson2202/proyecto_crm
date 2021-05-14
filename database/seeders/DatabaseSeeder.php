@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
         $this->call(RolSeedeer::class);
         $this->call(UserSeeder::class);
         $this->call(MediosSeeder::class);
+        $this->call(TipoequipoSeeder::class);
         // \App\Models\User::factory(10)->create();
         Cliente::factory(10)->create();
         Equipo::factory(10)->create();

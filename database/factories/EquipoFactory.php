@@ -23,7 +23,7 @@ class EquipoFactory extends Factory
     public function definition()
     {
         return [
-            'nombre'=>$this->faker->randomElement(['router tenda','switch','Antena','Antena TDT']),
+            'tipoequipo_id'=>$this->faker->numerify(1),
             'codigo'=>$this->faker->unique()->numerify($string="########"),
             'serial'=>$this->faker->unique()->numerify($string="########"),
             'mac'=>$this->faker->unique()->numerify($string="##########"),
