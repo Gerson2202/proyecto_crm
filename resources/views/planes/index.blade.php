@@ -11,7 +11,7 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Pagina Principal</a></li>
+              <li class="breadcrumb-item"><a href="{{route('homeIndex')}}">Pagina Principal</a></li>
             </ol>
           </div>
         </div>
@@ -40,6 +40,7 @@
                   <th>CODIGO</th>
                   <th>DESCRIPCION</th>
                   <th>#MEGAS</th>
+                  <th>OPCIONES</th>
                 </tr>        
             </thead>
             <tbody>             
@@ -47,6 +48,7 @@
               <tr>
                 <th scope="row">{{$item->id_plan}}</th>
                 <td>{{$item->descripcion}}</td>
+                <td>{{$item->cant_megas}}</td>
                 <td>
                   <a href="{{route('planesEdit',$item->id)}}" style="margin: 10px" ><i class="fas fa-pen-alt"></i></a>
                   <a href="#" style="margin: 10px" class="verPlanes" planFull="{{$item}}" 

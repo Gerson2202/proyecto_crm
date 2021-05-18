@@ -166,7 +166,7 @@
                             <div class="valid-feedback"> </div>
                           </div>
                           <br>
-                          <button type="submit" class="btn text-light mx-1" style="background-color:#3333CC">Agregar cliente</button>
+                          <button type="submit" class="btn text-light mx-1" style="background-color:#3333CC">Modificar</button>
             
                         </div>
                       </div>

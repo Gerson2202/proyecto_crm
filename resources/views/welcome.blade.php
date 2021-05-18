@@ -33,8 +33,12 @@
              @auth
                  <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline">Dashboard</a>
              @else
-                 <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Login</a>
-
+                 
+                 <nav class="mt-4 bg-gray-200 shadow-lg">
+                    <ul class="flex">
+                      <li><a href="{{ route('login') }}" class="inline-block px-4 py-4 mr-1 font-semibold text-blue-500 hover:bg-gray-300 hover:text-blue-700 focus:font-bold focus:outline-none focus:bg-gray-500 focus:text-indigo-100 active:text-red-400">Ingresar</a></li>
+                    </ul> 
+                  </nav>
                  {{-- @if (Route::has('register'))
                      <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
                  @endif --}}
@@ -43,7 +47,18 @@
      @endif
     </head>
     <body class="antialiased login-fondo">
-        
+        <div class="main-header ">
+            <div class="container">
+                <div class="logo-box">
+                                        
+                    <a href="http://silcom.co/site/">
+                    <img class="site-logo normal_logo" alt="Silcom Telecomunicaciones" src="http://silcom.co/site/wp-content/uploads/2016/06/logoSupWeb.png" />
+                    </a>
+                     
+                </div>
+               
+            </div>
+        </div>
     </body>
     {{-- <body class="antialiased login-fondo">
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
@@ -157,3 +172,4 @@
 
     
 </html>
+<style></style>

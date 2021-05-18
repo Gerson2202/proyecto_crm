@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-6">
-      <h5>Bodega de materiales</h5>                                  
+      <h5 class="text-primary"> <strong class="text-primary"> Bodega de materiales</strong></h5>                                  
       <hr>
       <table class="table table-sm">
         <thead>
@@ -23,7 +23,7 @@
       </table>
     </div>
     <div class="col-6">
-      <h5>Bodega de Equipos</h5>                                  
+      <h5 class="text-primary"> <strong class="text-primary"> Bodega de equipos</strong></h5>                                 
       <hr>
       <table class="table table-sm">
         <thead>

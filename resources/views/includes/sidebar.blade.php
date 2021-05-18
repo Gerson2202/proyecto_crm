@@ -1,12 +1,19 @@
 <aside  class="main-sidebar sidebar-white-primary elevation-4" style="background:rgba(241, 241, 240, 0.659) ">
     <!-- Brand Logo rgba(241, 241, 240, 0.659) -->
-    <a href="{{route('homeIndex')}}" class="brand-link">
+    {{-- <a href="{{route('homeIndex')}}" class="brand-link">
       <img src="{{asset('assets/img/AdminLTELogo.png')}}"
            alt="AdminLTE Logo"
            class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">Silcom SA</span>
-    </a>
+    </a> --}}
+    <div class="logo-box">
+                                        
+      <a href="{{route('homeIndex')}}">
+      <img class="site-logo normal_logo" alt="Silcom Telecomunicaciones" src="http://silcom.co/site/wp-content/uploads/2016/06/logoSupWeb.png" />
+      </a>
+       
+  </div>
     <hr>
 
     <!-- Sidebar -->

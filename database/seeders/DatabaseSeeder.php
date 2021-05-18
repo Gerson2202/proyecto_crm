@@ -25,19 +25,19 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::class);
         $this->call(MediosSeeder::class);
         $this->call(TipoequipoSeeder::class);
-        // \App\Models\User::factory(10)->create();
+        
         Cliente::factory(10)->create();
         Equipo::factory(10)->create();
         Factura::factory(10)->create();
         Ticket::factory(10)->create();
-        // $this->call(ClienteSeeder::class);
+        
         $this->call(PlanSeeder::class);
         $this->call(MaterialSeeder::class);
-        $this->call(SedeSeeder::class);
+        // $this->call(SedeSeeder::class);
         // $this->call(FacturaSeeder::class); 
         
         // $this->call(EquipoSeeder::class);
-       
-        
+       // \App\Models\User::factory(10)->create();
+        // $this->call(ClienteSeeder::class);
     }
 }

@@ -31,6 +31,7 @@ use App\Http\Controllers\NodoController;
 use App\Http\Controllers\ProgramationController;
 use App\Http\Controllers\SalidaEquipoController;
 use App\Http\Controllers\SalidaTecnicoController;
+use App\Http\Controllers\SedeController;
 use App\Http\Controllers\TipoequipoController;
 
 /*
@@ -56,9 +57,9 @@ Route::get('/', function () {
 //     return view('Panel.programacion');   
 // })->name('programacionVista');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+//     return view('dashboard');
+// })->name('dashboard');
 
 
 
@@ -267,3 +268,9 @@ Route::middleware(['auth:sanctum','verified'])->get('/Crm/inventario/material/el
 Route::middleware(['auth:sanctum','verified'])->post('/Crm/inventario/material/sumar', [MaterialController::class,'sumar'])->name('matrialSumar');
 Route::middleware(['auth:sanctum','verified'])->get('/Crm/inventario/material/editar/{id}', [MaterialController::class,'editar'])->name('matrialEditar');
 Route::middleware(['auth:sanctum','verified'])->post('/Crm/inventario/material/update', [MaterialController::class,'update'])->name('matrialUpdate');
+
+
+// ROUTAS SEDES
+Route::middleware(['auth:sanctum','verified'])->post('/sede/guardar', [SedeController::class,'store'])->name('sedeStore');
+Route::middleware(['auth:sanctum','verified'])->get('/sede/listar', [SedeController::class,'listar'])->name('sedeListar');
+Route::middleware(['auth:sanctum','verified'])->get('/sede/eliminar/{id}', [SedeController::class,'destroy'])->name('sedeDelet');

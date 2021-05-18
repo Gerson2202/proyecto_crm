@@ -34,7 +34,7 @@
  </div> --}}
 
 
-  <div class="col-md-4 col-sm-6 col-12">
+  <div class="col-md-6 col-sm-6 col-12">
     <div class="info-box">
       <span class="info-box-icon bg-info"><i class="fas fa-globe"></i></span>
 
@@ -49,7 +49,7 @@
     <!-- /.info-box -->
   </div>
   <!-- /.col -->
-  <div class="col-md-4 col-sm-6 col-12">
+  <div class="col-md-6 col-sm-6 col-12">
     <div class="info-box">
       <span class="info-box-icon bg-success"><i class="fas fa-file-signature"></i></span>
 
@@ -64,7 +64,7 @@
     <!-- /.info-box -->
   </div>
   <!-- /.col -->
-  <div class="col-md-4 col-sm-6 col-12">
+  {{-- <div class="col-md-4 col-sm-6 col-12">
     <div class="info-box">
       <span class="info-box-icon bg-warning"><i class="fas fa-coins"></i></span>
 
@@ -75,4 +75,4 @@
       <!-- /.info-box-content -->
     </div>
     <!-- /.info-box -->
-  </div>
+  </div> --}}

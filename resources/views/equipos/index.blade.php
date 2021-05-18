@@ -12,7 +12,7 @@
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Pagina Principal</a></li>
+            <li class="breadcrumb-item"><a href="{{route('homeIndex')}}">Pagina Principal</a></li>
             <li class="breadcrumb-item btn-outline-default"><a href="{{route('equipoCreate')}}">Nuevo Equipo</a></li>
           </ol>
         </div>

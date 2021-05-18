@@ -35,7 +35,10 @@ class SedeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $nuevo=new Sede();
+        $nuevo->nombre=$request->txtNombre;
+        $nuevo->save();
+        return response(true);
     }
 
     /**
@@ -55,9 +58,12 @@ class SedeController extends Controller
      * @param  \App\Models\Sede  $sede
      * @return \Illuminate\Http\Response
      */
-    public function edit(Sede $sede)
+    public function edit(Request $request,$id)
     {
-        //
+        $update=Sede::FindOrFail($id);
+        $update->nombre=$request->nombre;
+        $update->save();
+        return response(true);
     }
 
     /**
@@ -78,8 +84,14 @@ class SedeController extends Controller
      * @param  \App\Models\Sede  $sede
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Sede $sede)
+    public function destroy($id)
     {
-        //
+        Sede::findOrFail($id)->delete();
+        return response(true);
+    }
+    public function listar(Sede $sede)
+    {
+        $sedes=Sede::all();
+        return datatables()->of($sedes)->toJson();
     }
 }

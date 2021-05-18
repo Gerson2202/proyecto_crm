@@ -7,7 +7,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Administracion De Planes</h1>
+            <h1> <i class="fas fa-edit"></i> Edicion De Plan</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -75,26 +75,66 @@
                   <div class="card">
                     <div class="card-header p-2" >
                       <ul class="nav nav-pills " >
-                        <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Activity</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Modificar</a></li>
                         {{-- <li class="nav-item"><a class="nav-link" href="#settingss" data-toggle="tab">setting</a></li> --}}
-                        <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Modificar</a></li>
+                        {{-- <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Modificar</a></li> --}}
                       
                       </ul>
                     </div><!-- /.card-header -->
                     <div class="card-body">
                       <div class="tab-content">
                         <div class="active tab-pane" id="activity">
-                          <!-- Post -->
-                          <div class="post">
-                            
-      
-                          
-      
-                            
-                          </div>
-                          <!-- /.post -->
-      
-                          <!-- Post -->
+                          <form class="form-horizontal" action="{{route('planUpdate',$plan->id)}}" method="POST">
+                            @csrf
+                         
+                             <div class="form-group row">
+                               <label for="inputName" class="col-sm-2 col-form-label">Codigo</label>
+                               <div class="col-sm-10">
+                                 <input type="text" name="id_plan" class="form-control" id="exampleInputEmail1" value="{{old('id_plan',$plan->id_plan)}}">
+                                 
+                               </div>
+                             </div>
+                             <div class="form-group row">
+                               <label for="inputEmail" class="col-sm-2 col-form-label">descripcion</label>
+                               <div class="col-sm-10">
+                                 <input type="text" name="descripcion" class="form-control" id="exampleInputEmail1" value="{{old('descripcion',$plan->descripcion)}}">
+                               </div>
+                             </div>
+                             <div class="form-group row">
+                               <label for="inputName2" class="col-sm-2 col-form-label"># de megas</label>
+                               <div class="col-sm-10">
+                                 <input type="text" name="cant_megas" class="form-control" id="exampleInputEmail1" value="{{old('cant_megas',$plan->cant_megas)}}">
+                               </div>
+                             </div>
+                             <div class="form-group row">
+                               <label for="inputSkills" class="col-sm-2 col-form-label">V. Bajada</label>
+                               <div class="col-sm-10">
+                                 <input type="text" name="vel_bajada" class="form-control" id="exampleInputEmail1" value="{{old('vel_bajada',$plan->vel_bajada)}}">                              </div>
+                             </div>
+                             <div class="form-group row">
+                               <label for="inputSkills" class="col-sm-2 col-form-label">V. Subida</label>
+                               <div class="col-sm-10">
+                                 <input type="text" name="vel_subida" class="form-control" id="exampleInputEmail1" value="{{old('vel_subida',$plan->vel_subida)}}">                              </div>
+                             </div>
+                             <div class="form-group row">
+                               <label for="inputEmail" class="col-sm-2 col-form-label">Canon $</label>
+                               <div class="col-sm-10">
+                                 <input type="text" name="canon" class="form-control" id="exampleInputEmail1" value="{{old('cant_megas',$plan->canon)}}">                              </div>
+                             </div>
+                             <div class="form-group row">
+                               <label for="inputName2" class="col-sm-2 col-form-label">Global</label>
+                               <div class="col-sm-10">
+                                 <input type="text" name="globaal" class="form-control" id="exampleInputEmail1" value="{{old('globaal',$plan->globaal)}}">                              </div>
+                             </div>
+ 
+                             <div class="form-group row">
+                               <div class="offset-sm-2 col-sm-10">
+                                 <button type="submit" class="btn text-light" style="background-color:#3333cc">Modificar</button>
+                              
+                               </div>
+                               
+                             </div>
+                           </form>
                           
                         </div>
                         <!-- /.tab-pane PANEL 1-->
@@ -105,57 +145,7 @@
                         <!-- /.tab-pane EDICION  DE PLAN-->      
                         <div class="tab-pane" id="settings">
                         
-                          <form class="form-horizontal" action="{{route('planUpdate',$plan->id)}}" method="POST">
-                          @csrf
                         
-                            <div class="form-group row">
-                              <label for="inputName" class="col-sm-2 col-form-label">Codigo</label>
-                              <div class="col-sm-10">
-                                <input type="text" name="id_plan" class="form-control" id="exampleInputEmail1" value="{{old('id_plan',$plan->id_plan)}}">
-                                
-                              </div>
-                            </div>
-                            <div class="form-group row">
-                              <label for="inputEmail" class="col-sm-2 col-form-label">descripcion</label>
-                              <div class="col-sm-10">
-                                <input type="text" name="descripcion" class="form-control" id="exampleInputEmail1" value="{{old('descripcion',$plan->descripcion)}}">
-                              </div>
-                            </div>
-                            <div class="form-group row">
-                              <label for="inputName2" class="col-sm-2 col-form-label"># de megas</label>
-                              <div class="col-sm-10">
-                                <input type="text" name="cant_megas" class="form-control" id="exampleInputEmail1" value="{{old('cant_megas',$plan->cant_megas)}}">
-                              </div>
-                            </div>
-                            <div class="form-group row">
-                              <label for="inputSkills" class="col-sm-2 col-form-label">V. Bajada</label>
-                              <div class="col-sm-10">
-                                <input type="text" name="vel_bajada" class="form-control" id="exampleInputEmail1" value="{{old('vel_bajada',$plan->vel_bajada)}}">                              </div>
-                            </div>
-                            <div class="form-group row">
-                              <label for="inputSkills" class="col-sm-2 col-form-label">V. Subida</label>
-                              <div class="col-sm-10">
-                                <input type="text" name="vel_subida" class="form-control" id="exampleInputEmail1" value="{{old('vel_subida',$plan->vel_subida)}}">                              </div>
-                            </div>
-                            <div class="form-group row">
-                              <label for="inputEmail" class="col-sm-2 col-form-label">Canon $</label>
-                              <div class="col-sm-10">
-                                <input type="text" name="canon" class="form-control" id="exampleInputEmail1" value="{{old('cant_megas',$plan->canon)}}">                              </div>
-                            </div>
-                            <div class="form-group row">
-                              <label for="inputName2" class="col-sm-2 col-form-label">Global</label>
-                              <div class="col-sm-10">
-                                <input type="text" name="globaal" class="form-control" id="exampleInputEmail1" value="{{old('globaal',$plan->globaal)}}">                              </div>
-                            </div>
-
-                            <div class="form-group row">
-                              <div class="offset-sm-2 col-sm-10">
-                                <button type="submit" class="btn text-light" style="background-color:#3333cc">Modificar</button>
-                             
-                              </div>
-                              
-                            </div>
-                          </form>
                         </div>
                         <!-- /.tab-pane -->
                       </div>

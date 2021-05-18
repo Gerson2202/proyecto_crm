@@ -29,10 +29,10 @@
                     <li class="nav-item">
                       <a class="nav-link active" id="custom-content-below-home-tab" data-toggle="pill" href="#custom-content-below-home" role="tab" aria-controls="custom-content-below-home" aria-selected="true">Home</a>
                     </li>
-                    {{-- <li class="nav-item">
-                      <a class="nav-link" id="custom-content-below-messages-tab" data-toggle="pill" href="#custom-content-below-messages" role="tab" aria-controls="custom-content-below-messages" aria-selected="false">Agregar</a>
+                     <li class="nav-item">
+                      <a class="nav-link" id="custom-content-below-messages-tab" data-toggle="pill" href="#custom-content-below-messages" role="tab" aria-controls="custom-content-below-messages" aria-selected="false">Sedes</a>
                     </li>
-                    <li class="nav-item">
+                    {{--<li class="nav-item">
                       <a class="nav-link" id="custom-content-below-settings-tab" data-toggle="pill" href="#custom-content-below-settings" role="tab" aria-controls="custom-content-below-settings" aria-selected="false">Mis Clientes</a>
                     </li> --}}
                   </ul>
@@ -139,9 +139,55 @@
                       </div>
   
                     </div>
+                    {{-- SEDES --}}
+
+                    <div class="tab-pane fade show " id="custom-content-below-messages" role="tabpanel" aria-labelledby="custom-content-below-messages-tab">
+                      <br>
+                      <div class="form-row">
+                        <div class="col-4">
+                          <div class="card">
+                              <div class="card-header card-primary  card-outline text-center text-info">Agregar Sede</div>
+                              
+                              <form action="" id="formAggSede">
+                                @csrf
+                                <div class="card-body">           
+                                  <input type="text" name="txtNombre" id="txtNombre" class="form-control" placeholder="Nombre"> 
+                                  <br>
+                                  
+                                  <a href="#" onclick="AgregarSede()" class="btn btn-info btn-sm">Agregar </a>
+                                
+                                
+                                </div>            
+                            </form>
+                          </div>
+                        </div>
+                        <div class="col-8">
+                          <div class="card">
+                              <div class="card-header card-primary  card-outline text-center">Sedes</div>
+                              <div class="card-body">
+                                <div class="table-responsive">
+                                  <table class="table table-sm" id="tablaSede">
+                                    <thead>
+                                      <tr>       
+                                          <th>id</th>               
+                                          <th>Nombre</th>
+                                          <th>Opciones</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                          
+                                       </tr>                                       
+                                    </tbody>
+                                  </table>
+                              </div>
+                               
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  
-                </div>
                 <!-- /.card -->
               </div>
             </div>
@@ -279,6 +325,91 @@
   placeholder: "selecciona Equipos",
               
   });
+
+  function AgregarSede()
+  {
+    var sede= new FormData(document.getElementById("formAggSede")); 
+      $.ajax(
+          {
+            url: "/sede/guardar", 
+            type: "POST",
+            data: sede,
+            processData: false,   //tell jQuery not to process the data
+            contentType: false,    //tell jQuery not to set contentType
+              //a continuacion refrescar la tabla despues de un evento
+             success: function(response){
+               $('#txtNombre').val("");
+              toastr.success("Sede Guardada");
+              tablaSede.ajax.reload();
+              }
+         })  
+  };
+
+  var tablaSede =$('#tablaSede').DataTable(
+      {
+                      "ajax": "{{route('sedeListar')}}",
+                      "columns": [
+                        {data: 'id'},
+                        {data: 'nombre'}, 
+                        {defaultContent: ' </button> <button class="btn btn-sm btn-danger tittle="eliminar" id="btnEliminaSede"><i class="fas fa-trash-alt"></i></button>'}                 
+
+                        
+                      ],
+                    responsive:true,
+                    autoWidth: false,
+                        
+                    "language": { 
+                      "lengthMenu": "Mostrar _MENU_ Registros",
+                      "zeroRecords": "Obteniendo datos....",
+                      "info":"Pagina _PAGE_ de _PAGES_",
+                      "infoEmpty": "No records available",
+                      "infoFiltered": "(filtrado de  _MAX_ registros totales)",
+                      "sSearch": "Buscar:",
+                      "oPaginate": {
+                        "sFirst": "Primero",
+                        "sLast": "Ultimo",
+                        "sNext": "Siguiente",
+                        "sPrevious": "Anterior"
+                      },
+                      "sProcessing": "Procesando...",
+                  }
+                    
+                    
+      });
+
+      var fila; //captura la fila en la que estoy
+
+        $(document).on("click","#btnEliminaSede",function(){
+         fila= $(this).closest("tr");
+         let idSede= parseInt(fila.find('td:eq(0)').text()); //tomamos el primero dato el 0 que se encuentra en esa fila en nuestro caso es el id
+         Swal.fire({
+                  title: 'Estas Seguro?',
+                  text: "Deseas Eliminar este Comentario?",
+                  icon: 'warning',
+                  showCancelButton: true,
+                  confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  confirmButtonText: 'Si!'
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    $.ajax(
+                    {
+                        url: "/sede/eliminar/"+idSede, 
+                        processData: false,   //tell jQuery not to process the data
+                        contentType: false, //tell jQuery not to set contentType
+                          
+                          success: function(response)
+                          {
+                            tablaSede.ajax.reload();
+                            toastr.success("Sede Eliminada");
+                          }        
+                    }) 
+                  }
+                })      
+
+
+        });
+
 </script>
 {{-- MENSAJE DE EXITO --}}
 @if (session('mensaje'))

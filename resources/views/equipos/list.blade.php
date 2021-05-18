@@ -107,6 +107,17 @@
           
           });
           </script>
+
+
+           @if (isset($errors)&& $errors->any())
+           <div class="div alert-danger">
+             @foreach ($errors->all() as $item)
+             <script>
+               toastr.error("Error! revisar que no haya informacion duplicada");
+             </script>  
+             @endforeach
+           </div>
+         @endif
         <!-- /.card-body -->
       </div>
       <!-- /.card -->
