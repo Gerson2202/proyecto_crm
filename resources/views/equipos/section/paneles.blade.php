@@ -240,7 +240,7 @@
   <div class="modal-dialog modal-lg" >
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Materiales</h4>
+        <h4 class="modal-title text-info">Materiales</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -249,7 +249,7 @@
         <div class="row">
           <div class="col-6">
              <div class="card">
-              <div class="card-header">Lista de materiales</div>
+              <div class="card-header text-primary">Lista de materiales</div>
               <div class="card-body">
                 <table class="table table-striped table-bordered" id="tablaMateriales"> 
                    <thead >
@@ -271,7 +271,7 @@
           </div>
           <div class="col-6">
             <div class="card">
-              <div class="card-header">Agregar material</div>
+              <div class="card-header text-primary">Agregar material</div>
               <div class="card-body">
                 
                    <form  method="POST" action=""  id="formMaterial">

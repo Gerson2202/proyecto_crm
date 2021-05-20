@@ -6,12 +6,11 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h3>Edicion de Usuario</h3>
+            <h3> <i class="fas fa-user-edit"></i> Edicion de Usuario</h3>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Pagina Principal</a></li>
-              <li class="breadcrumb-item btn-outline-success"><a href="#">Nuevo</a></li>
+              <li class="breadcrumb-item"><a href="{{route('homeIndex')}}">Pagina Principal</a></li>
             </ol>
           </div>
         </div>
@@ -39,13 +38,13 @@
     
                     <ul class="list-group list-group-unbordered mb-3">
                         <li class="list-group-item">
-                        <b>Followers</b> <a class="float-right">1,322</a>
+                        <b></b> <a class="float-right"></a>
                         </li>
                         <li class="list-group-item">
-                        <b>Following</b> <a class="float-right">543</a>
+                        <b></b> <a class="float-right"></a>
                         </li>
                         <li class="list-group-item">
-                        <b>Friends</b> <a class="float-right">13,287</a>
+                        <b></b> <a class="float-right"></a>
                         </li>
                     </ul>
     
@@ -60,7 +59,7 @@
                 <div class="card">
                     <div class="card-header p-2">
                       <ul class="nav nav-pills">
-                        <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Activity</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Bodega</a></li>
                         <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Roles</a></li>
                         <li class="nav-item"><a class="nav-link" href="#permisos" data-toggle="tab">Permisos</a></li>
                         <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Editar</a></li>
@@ -72,7 +71,7 @@
                             {{-- <H4>CONTENIDO</H4> --}}
                             <div class="row">
                               <div class="col-6">
-                                <h5>Bodega de materiales</h5>                                  
+                                <h5 class="text-info">Bodega de materiales</h5>                                  
                                 <hr>
                                 <table class="table table-sm">
                                   <thead>
@@ -95,7 +94,7 @@
                                 </table>
                               </div>
                               <div class="col-6">
-                                <h5>Bodega de Equipos</h5>                                  
+                                <h5 class="text-info">Bodega de Equipos</h5>                                  
                                 <hr>
                                 <table class="table table-sm">
                                   <thead>
