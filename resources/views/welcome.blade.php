@@ -31,7 +31,7 @@
          @if (Route::has('login'))
          <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
              @auth
-                 <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline">Dashboard</a>
+                 <a href="{{ url('/Crm') }}" class="text-sm text-gray-700 underline">Dashboard</a>
              @else
                  
                  <nav class="mt-4 bg-gray-200 shadow-lg">
@@ -39,6 +39,7 @@
                       <li><a href="{{ route('login') }}" class="inline-block px-4 py-4 mr-1 font-semibold text-blue-500 hover:bg-gray-300 hover:text-blue-700 focus:font-bold focus:outline-none focus:bg-gray-500 focus:text-indigo-100 active:text-red-400">Ingresar</a></li>
                     </ul> 
                   </nav>
+                  
                  {{-- @if (Route::has('register'))
                      <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
                  @endif --}}

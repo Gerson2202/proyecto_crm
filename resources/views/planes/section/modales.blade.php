@@ -68,7 +68,7 @@
               </div>
             </div>
             <div class="modal-footer">
-              <button class="btn text-light" type="submit"  style="background-color:#3333cc">Agregar</button>
+              <button class="btn text-light" type="submit" dusk="planstore"  style="background-color:#3333cc">Agregar</button>
             </div> 
          </form>
         </div>

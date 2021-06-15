@@ -59,7 +59,7 @@
                 <div class="col-md-6 mb-3">
                   <label for="validationServer02">Ingreso de Equipos</label>
                     <select name="equipo_ingreso[]" multiple="multiple" class="custom-select " style="width: 100%" id="equipo_ingreso"  >
-                      @foreach ($equipos as $equip)
+                      @foreach ($equiposEnPosecion as $equip)
                       <option  value="{{ $equip->id }}">{{ $equip->mac }}</option>
                       @endforeach                     
                   </select> 

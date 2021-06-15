@@ -155,7 +155,7 @@
     <div class="col-12">
       <div class="card" id="tablaProgramaciones" style="display: none">
         <div class="card-header card-blue card-outline" style="background: white">
-          <h3 class="card-title">Programaciones asignadas</h3>          
+          <h3 class="card-title text-info">Programaciones asignadas</h3>          
         </div>
         <br>
         <!-- /.card-header -->

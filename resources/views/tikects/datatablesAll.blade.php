@@ -122,7 +122,9 @@
                                 "targets":0,
                                 "data": "download_link",
                                 "render": function ( data, type, row, meta ) {
-                                  return '<a href="/tikects/show/'+data+'" class="btn btn-info">'+data+'</a>';
+                                  let ruta1 = "{{ route('ticketShow', 'req_id') }}" 
+                                  var ruta = ruta1.replace('req_id',data)
+                                  return '<a href="'+ruta+'" class="btn btn-info">'+data+'</a>';
                                 }
                               }],
                     responsive:true,

@@ -53,7 +53,7 @@ class UserController extends Controller
     {
         $request->validate([
             'password'=>'min:8',
-            'email'=>'unique:users',
+            'email'=>'unique:users'
         ]);
         $nuevo=new User();
         $nuevo->name=$request->txtName;
@@ -63,7 +63,6 @@ class UserController extends Controller
         $nuevo->save();
         return redirect()->route('userShow',$nuevo->id)->with('mensaje','Nuevo usuario');
         // return response($nuevo);
-
     }
 
     

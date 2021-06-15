@@ -95,6 +95,7 @@ class ProgramationController extends Controller
          }
          return response()->json($nueva_agenda);
      }
+    //  SIN USAR
     public function validar ($fecha,$hora_inicial,$hora_final)
     {
         $programation=Programation::select()
@@ -108,23 +109,7 @@ class ProgramationController extends Controller
 
     public function store(Request $request)
     {
-    //    return $request;
-        // $nuevo= $request->all();
-        
-        //     $programation=Programation::create([
-        //         "titulo"=>$nuevo["titulo"],
-        //         "fecha"=>$nuevo["fecha"],
-        //         "hora_inicial"=>$nuevo["hora_inicial"],
-        //         "hora_final"=>$nuevo["hora_final"],
-        //         "user_id"=>$nuevo["user_id"],
-        //         "cliente_id"=>$nuevo["cliente_id"],
-        //         "descripcion"=>$nuevo["descripcion"],
-        //         "direccion"=>$nuevo["direccion"]
-        //     ]); 
-        //     return response()->json(["ok"=>true]);
-            // return response ()->json($programation);
-
-            // lo nuevo
+    
             $nuevo= new Programation();
             $nuevo->titulo=$request->titulo;
             $nuevo->fecha=$request->fecha;
@@ -176,22 +161,7 @@ class ProgramationController extends Controller
             return response()->json(["ok"=>true]);
        
        
-        
-           
-        
-            // $programation=Programation::findOrFail($id)([
-            //     "titulo"=>$datos["titulo"],
-            //     "fecha"=>$datos["fecha"],
-            //     "hora_inicial"=>$datos["hora_inicial"],
-            //     "hora_final"=>$datos["hora_final"],
-            //     "user_id"=>$datos["user_id"],
-            //     "cliente_id"=>$datos["cliente_id"],
-            //     "descripcion"=>$datos["descripcion"],
-            //     "direccion"=>$datos["direccion"],
-            //     "estado"=>$datos["estado"]
-            // ]);
-
-        // return response ()->json($programation);
+    
             
     }    
     public function destroy(Programation $programation)
@@ -231,7 +201,7 @@ class ProgramationController extends Controller
          return $programacion;
     }
 
-    
+    // PARA TABALA DE SOPORTE
     public function cambioEstado($id)
     {       
         
@@ -261,7 +231,7 @@ class ProgramationController extends Controller
          return datatables()->of($programacion)->toJson();
     }
 
-    // PROGRAMACIONES EN COLA , LOS QUE TENGASN NULL EL CLIENTE
+    // PROGRAMACIONES EN COLA , LOS QUE TENGASN NULL EL CLIENTE PATA TABLA DE COLA
     public function listarCola()
     {
         $programacion=Programation::where('cliente_id',null)->get();

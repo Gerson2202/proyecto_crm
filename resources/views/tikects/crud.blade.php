@@ -11,7 +11,7 @@
       var datosP = new FormData(document.getElementById("formAgregarTicket")); 
       $.ajax(
           {
-            url: "/ticket/guardar", 
+            url: "{{route('tikectStore')}}",  
             type: "POST",
             data: datosP,
             processData: false,   //tell jQuery not to process the data
@@ -35,9 +35,11 @@
      {
          fila= $(this).closest("tr");
             let id= parseInt(fila.find('td:eq(0)').text()); //tomamos el primero dato el 0 que se encuentra en esa fila en nuestro caso es el id
+            let rutaA = "{{ route('ticketAtender', 'req_id') }}" 
+            var rutaAt = rutaA.replace('req_id',id)
             $.ajax(
               {
-                  url: "/ticket/atender/"+id, 
+                  url: rutaAt, 
                   type: "GET",
                   processData: false,   //tell jQuery not to process the data
                   contentType: false, //tell jQuery not to set contentType
@@ -46,7 +48,7 @@
                    {
                       tabla2.ajax.reload();
                       tabla3.ajax.reload();
-                      toastr.info("Ticket Asigando");
+                      toastr.info("Ticket Atendido");
                    }        
               }) 
 
@@ -62,9 +64,12 @@
             fila= $(this).closest("tr");
             let id= parseInt(fila.find('td:eq(0)').text());
             idTicket= id; //damos valos ala varible global que hize para mandar el id ala vista 
+            let ruta1 = "{{ route('infoTicket', 'req_id') }}" 
+            var ruta = ruta1.replace('req_id',id)
             $.ajax(
+                   
                       {
-                          url: "/ticket/info/"+id, 
+                          url: ruta, 
                           type: "GET",
                           processData: false,   //tell jQuery not to process the data
                           contentType: false, //tell jQuery not to set contentType
@@ -124,9 +129,11 @@
         });
         
         // IR A CHAT FORMA DE USAR UN BOTON PARA CAMBIO DE VISTA SIN AJAX
-        $('#irChat').click(function()
-         {    
-          var src = "/tikects/show/"+ idTicket;
+        $('#irChat').click(function()        
+         {  
+          let rutaS = "{{ route('ticketShow', 'req_id') }}" 
+          var rutaSh = rutaS.replace('req_id',idTicket)  
+          var src = rutaSh;
           var image = $('#irChat').attr("href",src); // SIN USAR AJAX 
          })
 
@@ -143,9 +150,11 @@
                   confirmButtonText: 'Si!'
                 }).then((result) => {
                   if (result.isConfirmed) {
+                    let rutaE = "{{ route('ticketEliminar', 'req_id') }}" 
+                    var rutaEl = rutaE.replace('req_id',idTicket)
                     $.ajax(
                     {
-                        url: "/tikects/eliminar/"+idTicket, 
+                        url: rutaEl, 
                         type: "GET",
                         processData: false,   //tell jQuery not to process the data
                         contentType: false, //tell jQuery not to set contentType

@@ -61,9 +61,11 @@
                  confirmButtonText: 'Si!'
                }).then((result) => {
                  if (result.isConfirmed) {
+                  let rutaef1 = "{{ route('eliminarImg', 'req_id') }}" 
+                  var rutaf = rutaef1.replace('req_id',idImg)
                    $.ajax(
                      {
-                       url: "/acta/imagen/eliminar/"+idImg, 
+                       url: rutaf, 
                        processData: false,   //tell jQuery not to process the data
                        contentType: false,    //tell jQuery not to set contentType
                          //a continuacion refrescar la tabla despues de un evento
@@ -82,7 +84,7 @@
                })  
        });
 </script>
-ç
+
 {{-- ACRIP DE AGREGAR MATERIALES A ACTA --}}
 <script>
 
@@ -92,7 +94,7 @@
         var datosP = new FormData(document.getElementById("formAgregarMaterialActa")); 
           $.ajax(
               {
-                url: "/Crm/tecnico/agregarMaterialActa", 
+                url: "{{route('agregarMaterialActa')}}", 
                 type: "POST",
                 data: datosP,
                 processData: false,   //tell jQuery not to process the data
@@ -108,34 +110,39 @@
 </script>
 {{-- ACRIPT PARA TABLA MATERIALES ACTA --}}
 <script> 
+// TABLA DE MATERIALES
+  var idActa=$('#txtidActa').val();        
+  let ruta1a = "{{ route('listarMateriales', 'req_id') }}" 
+  var rutaM = ruta1a.replace('req_id',idActa)
 
-  var idActa=$('#txtidActa').val();         
   let tableMateriales=$('#tablaMateriales').DataTable({
     "bPaginate": false, "bFilter": false, "bInfo": false,
+    
     'ajax' : {
-        'url' : "/Crm/tecnico/actaShow/listaMateriales/"+idActa,
+        'url' : rutaM,
     },
     "columns": [
         {data: 'material.nombre'},
         {data: 'stock'},
-        {data: 'id'},
-        {data: 'material_id'},
+        // {data: 'id'},
+        // {data: 'material_id'},
     ],
-    "columnDefs": [
-                          {
-                            "targets":2,
-                            "data": "link",
-                            "render": function ( data, type, row, meta ) {
-                              return ' <a href="#" onclick="eliminarMaterial('+data+')" class="btn btn-sm btn-danger text-light eliminarMaterial"><i class="fas fa-trash-alt"> </i></a> ';
-                            }
-                          },
-                            {
-                              // OCULTAR COLUMNA
-                                "targets": [ 3 ],
-                                "visible": false,
-                                "searchable": false
-                            }
-                          ],
+    // "columnDefs": [
+    //                       {
+    //                         "targets":2,
+    //                         "data": "link",
+    //                         "render": function ( data, type, row, meta ) {
+                              
+    //                           return ' <a href="#" onclick="eliminarMaterial('+data+')" class="btn btn-sm btn-danger text-light eliminarMaterial"><i class="fas fa-trash-alt"> </i></a> ';
+    //                         }
+    //                       },
+    //                         {
+    //                           // OCULTAR COLUMNA
+    //                             "targets": [ 3 ],
+    //                             "visible": false,
+    //                             "searchable": false
+    //                         }
+    //                       ],
     responsive:true,
     autoWidth: false,
     "order": [[ 0, 'asc' ], [ 1, 'asc' ]],

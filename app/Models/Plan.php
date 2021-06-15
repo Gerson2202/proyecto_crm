@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Plan extends Model
 {
+    protected $fillable=['token','id_plan','descripcion','cant_megas','vel_subida','vel_bajada','canon','globaal'];
+
     use HasFactory;
     // use SoftDeletes;
     // muhcos a muchos con clientess

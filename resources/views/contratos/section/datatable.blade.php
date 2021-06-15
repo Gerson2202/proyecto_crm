@@ -18,7 +18,10 @@
             "data": "download_link",
             "render": function ( data, type, row, meta )
               {
-                return '<small class="text-success mr-1"><a class="btn btn-default text-light btn-sm  mx-1" style="background-color: #3333cc"  href="/Crm/Contratos/down/'+data+'" target="_blank"><i class="fas fa-download"></i>Descargar </a></small>';
+                let rutaCo = "{{ route('ContratoDown', 'req_id') }}" 
+                var rutaC = rutaCo.replace('req_id',data)
+
+                return '<small class="text-success mr-1"><a class="btn btn-default text-light btn-sm  mx-1" style="background-color: #3333cc"  href="'+rutaC+'" target="_blank"><i class="fas fa-download"></i>Descargar </a></small>';
               }
           }
           ],

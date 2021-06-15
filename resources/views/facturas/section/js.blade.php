@@ -44,7 +44,11 @@
   $('#formFactura').submit(function(e)
         {
          e.preventDefault();
-         $('#formFactura').attr('action','/Crm/Factura/update/'+id);
+
+         let ruta1 = "{{ route('facturaUpdate', 'req_id') }}" 
+         var ruta = ruta1.replace('req_id',id)
+
+         $('#formFactura').attr('action',ruta);
          this.submit();
                    
         });

@@ -34,7 +34,7 @@
     <div class="form-row">
       <div class="col-12">
         <div class="card">
-            <div class="card-header card-primary  card-outline text-center">Asiganados a mi</div>
+            <div class="card-header card-primary  card-outline text-center">Asignado</div>
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-striped table-bordered" id="tabla3">

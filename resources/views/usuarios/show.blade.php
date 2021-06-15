@@ -107,7 +107,11 @@
                                     
                                       @foreach ($equipos as $item)
                                       <tr>
-                                        <th scope="row" class="text-info">{{$item->nombre}}</th>
+                                        @if ($item->tipoequipo_id!=null)
+                                        <th scope="row" class="text-info">{{$item->tipoequipo->nombre}}</th>
+                                        @else
+                                        <th scope="row" class="text-info">sin tipo</th> 
+                                        @endif
                                         <td><a href="{{route('equipoShow',$item->id)}}">{{$item->mac}}</a></td>
                                         </tr> 
                                       @endforeach

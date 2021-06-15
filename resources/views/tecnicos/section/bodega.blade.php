@@ -35,9 +35,14 @@
         </thead>
         <tbody>
           
-            @foreach ($equipos as $item)
+            @foreach ($equiposEnPosecion as $item)
             <tr>
-              <th scope="row" class="text-info">{{$item->nombre}}</th>
+              @if ($item->tipoequipo_id!=null)
+              <th scope="row" class="text-info">{{$item->tipoequipo->nombre}}</th>
+              @else
+              <th scope="row" class="text-info">sin tipo</th> 
+              @endif
+              
               <td><a href="{{route('equipoShow',$item->id)}}">{{$item->mac}}</a></td>
               <th><a href="#" id="btnPrestar" class="btn btn-warning btn-sm btnPrestar" datos="{{$item->id}}" data-toggle="modal" data-target="#modal-prestamo">Prestar</a></th>
               </tr> 
@@ -46,7 +51,7 @@
                                                   
         </tbody>
       </table>
-
+      {{-- INICIO DE MODAL DE PRESTAMOS --}}
       <div class="modal fade" id="modal-prestamo">
         <div class="modal-dialog ">
           <div class="modal-content">

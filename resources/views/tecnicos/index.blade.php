@@ -81,10 +81,11 @@
           
               fila= $(this).closest("tr");
               let ids=parseInt(fila.find('td:eq(0)').text());
-              
+              let ruta1 = "{{ route('cambioEstado', 'req_id') }}" 
+              var ruta = ruta1.replace('req_id',ids)
                 $.ajax(
                   {
-                      url: "/programacion/cambiarEstado/"+ids, 
+                      url: ruta, 
                       type: "GET",
                       processData: false,   
                       contentType: false,

@@ -186,8 +186,13 @@
             let id= parseInt(fila.find('td:eq(0)').text());
             // alert(id);
             let src = "/Crm/Clientes/ver/"+id;
-            // alert(src);
-            var btn = $('.btnEditar').attr("href",src); 
+
+            let ruta1 = "{{ route('clientesShow', 'req_id') }}" 
+            var ruta = ruta1.replace('req_id',id)
+
+            var btn = $('.btnEditar').attr("href",ruta); 
+
+
            });
          </script>
   

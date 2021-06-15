@@ -82,6 +82,13 @@
 
             {{-- CARD DE USUARIOS --}}
         <div class="card-body">
+          @if (session('mensaje'))
+            <div class="alert alert-success alert-dismissible">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+              <h5><i class="icon fas fa-check"></i> Alert!</h5>
+                {{session('mensaje')}}
+            </div>
+            @endif
           <div class="row">
             @foreach ($users as $item)
             <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch">
@@ -153,9 +160,11 @@
                   confirmButtonText: 'Si!'
                 }).then((result) => {
                   if (result.isConfirmed) {
+                    let ruta1 = "{{ route('userEliminar', 'req_id') }}" 
+                    var ruta = ruta1.replace('req_id',idUser)
                     $.ajax(
                       {
-                        url: "/Crm/user/eliminar/"+idUser, 
+                        url: ruta, 
                         processData: false,   //tell jQuery not to process the data
                         contentType: false,    //tell jQuery not to set contentType
                           //a continuacion refrescar la tabla despues de un evento

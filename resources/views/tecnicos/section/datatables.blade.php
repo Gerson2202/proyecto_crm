@@ -50,7 +50,9 @@
                             "targets":0,
                             "data": "download_link",
                             "render": function ( data, type, row, meta ) {
-                              return '<a href="/Crm/tecnico/show/'+data+'" class="btn btn-default text-info">Ver<a>';
+                              let ruta1 = "{{ route('showActaSalida', 'req_id') }}" 
+                              var ruta = ruta1.replace('req_id',data)
+                              return '<a href="'+ruta+'" class="btn btn-default text-info">Ver<a>';
                              }
                             }
                            ],

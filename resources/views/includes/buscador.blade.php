@@ -5,7 +5,7 @@
         source: function(request, response){
         
           $.ajax({
-            url:"/search/clientes",
+            url:"{{route('searchCliente')}}",
             dataType: 'json',
             data:{
               term: request.term
@@ -25,7 +25,10 @@
       });
       //  CUANDO DEMOS CLICK EN BUSCAR 
       $('.btnBuscar').click(function(){
+        
+        let ruta1 = "{{ route('clientesShow', 'req_id') }}" 
+        var ruta = ruta1.replace('req_id',id)
 
-        $('.btnBuscar').attr('href','/Crm/Clientes/ver/'+id);
+        $('.btnBuscar').attr('href',ruta);
       });
 </script>

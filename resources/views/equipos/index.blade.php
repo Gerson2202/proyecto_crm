@@ -48,7 +48,7 @@
      var datos = new FormData(document.getElementById("formMaterial"));
        $.ajax(
            {
-             url: "/Crm/inventario/material/store",
+             url: "{{route('materialStore')}}",
              type: "POST",
              data: datos,
              processData: false,
@@ -142,7 +142,7 @@
       var datos = new FormData(document.getElementById("formFactura"));
       $.ajax(
           {
-            url: "/Crm/Factura/create",
+            url: "{{route('storeFactura')}}",
             type: "POST",
             data: datos,
             //  headers: {
@@ -246,14 +246,20 @@
              },
          })
     }; 
-    // EDITAR METERIAL
+    // EDITAR METERIAL al dar click
     function editarMaterial(data)
     {
       $('#cardEditarMateriales').css("display", "block");      
       $('#idMaterialEditar').val(data);
+      $('#cardSumarMateriales').css("display", "none");
+
+      let idMaterial = data
+      let ruta1 = "{{ route('matrialEditar', 'req_id') }}" 
+      var ruta = ruta1.replace('req_id',idMaterial)
+
       $.ajax(
           {
-            url: "/Crm/inventario/material/editar/"+data,
+            url: ruta,
             processData: false,   //tell jQuery not to process the data
             contentType: false,    //tell jQuery not to set contentType
             success: function(material){
@@ -266,20 +272,20 @@
          })
     };  
 
-    // UDDATE MATERIAL
+    // UDDATE MATERIAL funcion 
     $('#btneditarMaterial').click(function(){
 
         var datos = new FormData(document.getElementById("formEditarMaterial"));
           $.ajax(
               {
-                url: "/Crm/inventario/material/update",
+                url: "{{route('matrialUpdate')}}",
                 type: "POST",
                 data: datos,
                 processData: false,
                 contentType: false,
                 success: function(nuevo){
 
-                    toastr.success("!!Material Editado");
+                    toastr.success("!Material Editado");
                     tablaMateriales.ajax.reload();
                     $('#inputStokEdit').val("");
                     $('#cardEditarMateriales').css("display", "none");
@@ -306,6 +312,7 @@
    function sumarMaterial(data)
     {
       $('#cardSumarMateriales').css("display", "block");
+      $('#cardEditarMateriales').css("display", "none");
       $('#idMaterial').val(data);
     };
 
@@ -313,14 +320,14 @@
         var datos = new FormData(document.getElementById("formSumarMaterial"));
           $.ajax(
               {
-                url: "/Crm/inventario/material/sumar",
+                url: "{{route('matrialSumar')}}",
                 type: "POST",
                 data: datos,
                 processData: false,
                 contentType: false,
                 success: function(nuevo){
 
-                    toastr.success("!!Material Sumado");
+                    toastr.success("!Material Sumado");
                     tablaMateriales.ajax.reload();
                     $('#stockSumar').val("");
                     $('#cardSumarMateriales').css("display", "none");

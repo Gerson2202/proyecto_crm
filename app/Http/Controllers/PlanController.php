@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\PlanesImport;
 use App\Models\Plan;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PlanController extends Controller
 {
@@ -127,4 +129,15 @@ class PlanController extends Controller
         print_r($_POST);
         exit;
     }
+
+     // IMPORTAR EXECEL
+    
+     public function planesExcel(Request $request)
+     {
+         $file=$request->file('file');
+         Excel::import(new PlanesImport, $file);
+         return redirect()->route('planesIndex')->with('mensaje','Datos Guardados');
+         
+     }
+    
 }

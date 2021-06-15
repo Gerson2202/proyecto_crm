@@ -55,9 +55,10 @@
     };
    
   
-                              
+        let ruta11 = "{{ route('actaImgList', 'req_id') }}" 
+        var rutaaa = ruta11.replace('req_id',idActa)                      
         var tablaImg=$('#tableImgActa').DataTable({
-          "ajax": '/acta/imagenes/list/'+idActa,
+          "ajax": rutaaa,
           "columns": [
               {data: 'id'},
               {data: 'url'},

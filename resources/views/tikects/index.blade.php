@@ -49,7 +49,7 @@
                 <a class="nav-link" id="custom-content-below-profile-tab" data-toggle="pill" href="#custom-content-below-profile" role="tab" aria-controls="custom-content-below-profile" aria-selected="false">Sin Asignar</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" id="custom-content-below-messages-tab" data-toggle="pill" href="#custom-content-below-messages" role="tab" aria-controls="custom-content-below-messages" aria-selected="false">Asignadas</a>
+                <a class="nav-link" id="custom-content-below-messages-tab" data-toggle="pill" href="#custom-content-below-messages" role="tab" aria-controls="custom-content-below-messages" aria-selected="false">Asignados</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" id="custom-content-below-comentarios-tab" data-toggle="pill" href="#custom-content-below-comentarios" role="tab" aria-controls="custom-content-below-comentarios" aria-selected="false">Comentarios</a>
@@ -66,7 +66,7 @@
                 @include('tikects.menuSinasignar')   
                       
                 {{-- MENU PROYECTOS --}}    
-                @include('tikects.menuProyecto')  
+                {{-- @include('tikects.menuProyecto')   --}}
                 {{-- MENU COMENTARIOS               --}}
                 @include('tikects.menuComentarios')  
             </div>
@@ -182,7 +182,7 @@
       var comentario= new FormData(document.getElementById("formAggComentario")); 
       $.ajax(
           {
-            url: "/comentario/guardar", 
+            url: "{{route('comentarioStore')}}", 
             type: "POST",
             data: comentario,
             processData: false,   //tell jQuery not to process the data
@@ -214,9 +214,12 @@
                   confirmButtonText: 'Si!'
                 }).then((result) => {
                   if (result.isConfirmed) {
+                    
+                    let ruta1 = "{{ route('comentariosDelet', 'req_id') }}" 
+                    var ruta = ruta1.replace('req_id',idComentario)
                     $.ajax(
                     {
-                        url: "/comentario/eliminar/"+idComentario, 
+                        url: ruta, 
                         processData: false,   //tell jQuery not to process the data
                         contentType: false, //tell jQuery not to set contentType
                           

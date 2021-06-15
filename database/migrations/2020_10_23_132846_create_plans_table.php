@@ -20,7 +20,7 @@ class CreatePlansTable extends Migration
             $table->string('cant_megas');
             $table->string('vel_subida');
             $table->string('vel_bajada');
-            $table->date('fecha_inicio');
+            $table->date('fecha_inicio')->nullable();
             $table->string('canon');
             $table->string('globaal');
             // $table->softDeletes();

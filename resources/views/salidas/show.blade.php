@@ -33,7 +33,12 @@
               </div>
             </div>
             {{-- ACA PONGO EL ID DE USER DE LA SALIDA --}}
-            <input type="hidden" id="idUser" value="{{$salida->user->id}}">
+            @if ($salida->user!=null)
+                <input type="hidden" id="idUser" value="{{$salida->user->id}}">
+            @else
+              <input type="hidden" id="idUser" value="{{null}}">
+            @endif
+            
             {{-- ACA PONGO EL ID DE USER DE LA SALIDA --}}
 
             <div class="card-body">
@@ -55,7 +60,11 @@
                             <i class="ion ion-bag"></i>
                           </div>
                           <a href="#" class="small-box-footer informacion bg-info"  Equipoid="{{$equipoSalida->equipo->id}}" nombre="{{$equipoSalida->equipo->nombre}}"
-                            fecha="{{$salida->fecha}}" responsable=" {{$salida->user->name}}" destino=" " descripcion=" {{$salida->descripcion}}"
+                            fecha="{{$salida->fecha}}" responsable=" @if ($salida->user!=null)
+                            {{$salida->user->name}}
+                             @else
+                             
+                             @endif" destino=" " descripcion=" {{$salida->descripcion}}"
                             mac="{{$equipoSalida->equipo->mac}}"  serial="{{$equipoSalida->equipo->serial}}"
                             data-toggle="modal" data-target="#modal-lg">Mas Informacion <i class="fas fa-arrow-circle-right"></i></a>
                           
@@ -143,7 +152,12 @@
                         <label for="validationServer01">Cantidad </label>
                         <input type="number" class="form-control" value="1" min="1" placeholder="m" id="inputCantidad" name="txtStock">
                         <input type="hidden" name="txtIdSalida" id="txtIdSalida" value="{{$salida->id}}">
-                        <input type="hidden" name="txtIdUser" id="txtIdUser" value="{{$salida->user->id}}">
+                        @if ($salida->user!=null)
+                          <input type="hidden" name="txtIdUser" id="txtIdUser" value="{{$salida->user->id}}">  
+                        @else
+                        <input type="hidden" name="txtIdUser" id="txtIdUser" value="{{null}}">  
+                        @endif
+                        
                         <div class="valid-feedback"> </div>
                       </div>
                       <div class="col-md-4 mb-4">

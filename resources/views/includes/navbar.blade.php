@@ -141,7 +141,7 @@
     </li> --}}
 
     <li class="nav-item dropdown">
-      <a class="nav-link" data-toggle="dropdown" href="#">
+      <a class="nav-link" dusk="icono" data-toggle="dropdown" href="#">
 
         {{-- esta linea la uso para llamr la foto de perfil --}}
         <img class="img-circle img-sm" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
@@ -158,7 +158,7 @@
           <span class="float-right text-muted text-sm">3 mins</span>
         </a>
         <div class="dropdown-divider"></div>
-        <a href="javascript:{}"onclick="document.getElementById('form_logout').submit();return false;" class="dropdown-item">
+        <a href="javascript:{}"onclick="document.getElementById('form_logout').submit();return false;" class="dropdown-item" dusk="cerrar">
           <i class="fa fa-lg fa-sign-out-alt text-danger"></i>Cerrar Sesion
           {{-- <span class="float-right text-muted text-sm">12 hours</span> --}}
         </a>

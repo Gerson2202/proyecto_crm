@@ -296,7 +296,7 @@
             </div>
             {{-- OCULTO --}}
             <div class="card" id="cardSumarMateriales">
-              <div class="card-header">Sumar material</div>
+              <div class="card-header  text-primary">Sumar material</div>
               <div class="card-body">
                 
                    <form  method="POST" action=""  id="formSumarMaterial">
@@ -317,7 +317,7 @@
             </div> 
             {{-- EDITAR MATERIAL --}}
             <div class="card" id="cardEditarMateriales">
-              <div class="card-header">Editar material</div>
+              <div class="card-header  text-primary">Editar material</div>
               <div class="card-body">
                 
                    <form  method="POST" id="formEditarMaterial">

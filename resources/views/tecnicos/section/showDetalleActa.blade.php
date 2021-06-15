@@ -74,7 +74,7 @@
                         <div class="card">
                             <!-- /.card-header -->
                             <div class="card-body">                              
-                                <form action="" id="formAgregarMaterialActa">
+                                <form action="" method="POST" id="formAgregarMaterialActa">
                                   @csrf
                                   <div class="form-row">
                                     <div class="col-md-4 mb-4">
@@ -140,7 +140,7 @@
                                     <div class="card-body">
                                       @foreach ($actaEquipos as $actaEquipo)
                                          @if ($actaEquipo->ingreso_id!=null)
-                                            <a href="{{route('equipoShow',$actaEquipo->ingreso->id)}}" class="btn btn-default btn-sm"><p>-{{$actaEquipo->ingreso->nombre}}</p> </a>
+                                            <a href="{{route('equipoShow',$actaEquipo->ingreso->id)}}" class="btn btn-default btn-sm"><p>-{{$actaEquipo->ingreso->mac}}</p> </a>
                                                  
                                           @else
                                             
@@ -163,7 +163,7 @@
                                       
                                         @foreach ($actaEquipos as $actaEquipo)
                                         @if ($actaEquipo->salida_id!=null)
-                                           <a href="{{route('equipoShow',$actaEquipo->salida->id)}}" class="btn btn-default btn-sm"><p>-{{$actaEquipo->salida->nombre}}</p> </a>
+                                           <a href="{{route('equipoShow',$actaEquipo->salida->id)}}" class="btn btn-default btn-sm"><p>-{{$actaEquipo->salida->mac}}</p> </a>
                                                 
                                          @else
                                            

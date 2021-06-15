@@ -246,9 +246,12 @@
                   confirmButtonText: 'Si!'
                 }).then((result) => {
                   if (result.isConfirmed) {
+
+                    let ruta1 = "{{ route('nodoEliminar', 'req_id') }}" 
+                    var ruta = ruta1.replace('req_id',idNodo)
                     $.ajax(
                       {
-                        url: "/Crm/nodo/eliminar/"+idNodo, 
+                        url: ruta, 
                         processData: false,   //tell jQuery not to process the data
                         contentType: false,    //tell jQuery not to set contentType
                           //a continuacion refrescar la tabla despues de un evento
@@ -285,9 +288,11 @@
          $('#btnUpdate').click(function()
          {   
           var datosUpdate = new FormData(document.getElementById("formNodoUpdate")); 
+          let ruta11 = "{{ route('nodoUpdate', 'req_id') }}" 
+          var ruta2 = ruta11.replace('req_id',idNodo)
             $.ajax(
                 {
-                  url: "/Crm/nodo/update/"+idNodo, 
+                  url: ruta2, 
                   type: "POST",
                   data: datosUpdate,
                   processData: false,   //tell jQuery not to process the data
@@ -331,7 +336,7 @@
     var sede= new FormData(document.getElementById("formAggSede")); 
       $.ajax(
           {
-            url: "/sede/guardar", 
+            url: "{{route('sedeStore')}}", 
             type: "POST",
             data: sede,
             processData: false,   //tell jQuery not to process the data
@@ -384,7 +389,7 @@
          let idSede= parseInt(fila.find('td:eq(0)').text()); //tomamos el primero dato el 0 que se encuentra en esa fila en nuestro caso es el id
          Swal.fire({
                   title: 'Estas Seguro?',
-                  text: "Deseas Eliminar este Comentario?",
+                  text: "Deseas Eliminar esta Sede?",
                   icon: 'warning',
                   showCancelButton: true,
                   confirmButtonColor: '#3085d6',
@@ -392,9 +397,11 @@
                   confirmButtonText: 'Si!'
                 }).then((result) => {
                   if (result.isConfirmed) {
+                    let rutaS1 = "{{ route('sedeDelet', 'req_id') }}" 
+                    var rutaS = rutaS1.replace('req_id',idSede)
                     $.ajax(
                     {
-                        url: "/sede/eliminar/"+idSede, 
+                        url: rutaS, 
                         processData: false,   //tell jQuery not to process the data
                         contentType: false, //tell jQuery not to set contentType
                           

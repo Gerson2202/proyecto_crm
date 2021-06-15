@@ -24,16 +24,28 @@
          <!-- Default box  TABLA PLANES-->
       <div class="card">
         <div class="card-header card-blue card-outline" style="background: white">
-          <h3 class="card-title"><i class="fas fa-table"></i> Lista de Planes</h3>
+          <h3 class="card-title"><i class="fas fa-table"></i>Lista de Planes</h3>
 
           <div class="card-tools">
-              <a class="btn text-blue btn-sm " data-toggle="modal" data-target="#modal-default" href="#">
+              <a class="btn text-blue btn-sm" dusk="crearplan" data-toggle="modal" data-target="#modal-default" href="#">
                 <i class="fa fa-plus"></i>
               </a> 
           </div>
-        </div>        
+        </div>         
         {{-- FIN DE MODAL --}}
         <div class="card-body">
+          <form action="{{route('planesExcel')}}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="row">
+              <div class="custom-file mx-1" style="width: 50%" >
+                <input name="file" type="file" class="custom-file-input"  required>
+                <label name="file" class="custom-file-label" for="">Importar desde Excel</label>
+              </div>
+            <button class="btn btn-sm btn-info"> Importar datos</button>
+            </div>           
+          
+          </form>
+          <hr>
           <TAble class="table table-striped table-bordered" id="planes">
             <thead>
                 <tr>
@@ -108,4 +120,15 @@
      @enderror
     {{-- BUSCADOR --}}
     @include('includes.buscador')
+    {{-- MENSAJE DE ERROR DE AXCCEL --}}
+    @if (isset($errors)&& $errors->any())
+           <div class="div alert-danger">
+             @foreach ($errors->all() as $item)
+             <script>
+               toastr.error("Error! revisar que el codigo no este duplicado.");
+             </script>  
+             @endforeach
+           </div>
+          @endif
+
 @endsection

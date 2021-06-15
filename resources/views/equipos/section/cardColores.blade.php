@@ -47,9 +47,14 @@
                       </thead>
                       <tbody >
                             @foreach ($equiposBodega as $item)
-                    
+                            
                               <tr>
-                                <th scope="row">{{$item->nombre}}</th>
+                                @if ($item->tipoequipo_id!=null)
+                                <th scope="row">{{$item->tipoequipo->nombre}}</th>                                                                 
+                                @else
+                                    
+                                <th scope="row">Sin tipo </th>
+                                @endif
                                 <td>
                                   <a href="{{route('equipoShow',$item->id)}}" class="btn btn-default btn-sm" style="color: #20207d">{{$item->codigo}}</a>
                                 </td>

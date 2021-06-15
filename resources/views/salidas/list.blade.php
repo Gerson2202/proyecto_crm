@@ -59,7 +59,11 @@
                                 "targets":0,
                                 "data": "download_link",
                                 "render": function ( data, type, row, meta ) {
-                                  return '<a href="/Crm/Inventario/salida/show/'+data+'" class="btn btn-info btn-sm">'+data+'<a>';
+                                 
+                                  let ruta12 = "{{ route('salidaShow', 'req_id') }}"
+                                  var ruta11 = ruta12.replace('req_id',data)
+
+                                  return '<a href="'+ruta11+'" class="btn btn-info btn-sm">'+data+'<a>';
                                 }
                               }],
               responsive:true,
@@ -114,9 +118,12 @@
                   confirmButtonText: 'Si!'
                 }).then((result) => {
                   if (result.isConfirmed) {
+
+                    let ruta1 = "{{ route('salidaEliminar', 'req_id') }}" 
+                    var ruta = ruta1.replace('req_id',id)
                     $.ajax(
                       {
-                        url: "/Crm/Inventario/salida/delet/"+id, 
+                        url: ruta, 
                         processData: false,   //tell jQuery not to process the data
                         contentType: false,    //tell jQuery not to set contentType
                           //a continuacion refrescar la tabla despues de un evento

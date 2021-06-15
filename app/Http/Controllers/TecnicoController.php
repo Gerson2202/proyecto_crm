@@ -45,13 +45,13 @@ class TecnicoController extends Controller
         $usuario=User::findOrFail($userId)->load('programations');// todas las programaciones de usuario
         $programacion =$usuario->programations->where('estado','1')->sortBy('hora_inicial');//programaciones del usuario activas
         $cantidaProgramacion =$usuario->programations->where('estado','1')->count();//cantidad de programaciones del usuario activas
-       $users=User::all();
+        $users=User::all();
         // para podega
         $materiales=MaterialUser::where('user_id',$userId)->get();        
-        $equipos=Equipo::where('user_id',$userId)->get();
+        $equiposEnPosecion=Equipo::where('user_id',$userId)->get();
 
         $nuevo = DB::table('users')->orderBy('id', 'desc')->get();
-        return view('tecnicos.index',compact('equipos','actas','ticket','cantidaTickets','programacion','cantidaProgramacion','materiales','equipos','users'));
+        return view('tecnicos.index',compact('equipos','actas','ticket','cantidaTickets','programacion','cantidaProgramacion','materiales','equiposEnPosecion','users'));
          
     }
 
@@ -112,7 +112,7 @@ class TecnicoController extends Controller
                
                     $Equipo_salida = new ActaEquipo();
                     $Equipo_salida->ingreso_id             =   null;
-                    $Equipo_salida->acta_id                    =   $salida->id;
+                    $Equipo_salida->acta_id                    =   $salida->id;                   
                     $Equipo_salida->save();
                 
             }
@@ -128,9 +128,11 @@ class TecnicoController extends Controller
                     $Equipo_salida->save();
 
                     // cambiamos estado de equipo
+                    
                     $equipo=Equipo::findOrFail($sub_cate);
                     $equipo->user_id=auth()->user()->id;
                     $equipo->destino="personal,retirado de cliente";
+                    $equipo->user_id=null;
                     $equipo->save();
                 }
             }
@@ -241,6 +243,8 @@ class TecnicoController extends Controller
     // AGREGAR MATERIAL AL ACTA
     public function agregarMaterialActa(Request $request)
     {
+       
+
         $material=$request->txtIdMaterial;
         $usuario=$request->txtIdUser;
         $acta=$request->txtIdActa;
@@ -273,12 +277,9 @@ class TecnicoController extends Controller
                  
                  
              }
-        }
-        // PREGUNTAMOS SI YA EXISTE EL MATERIAL EN ESA SALIDA PARA NO DEJARLO
-           
-        
-        if($modificar->save()){
-
+             // PREGUNTAMOS SI YA EXISTE EL MATERIAL EN ESA SALIDA PARA NO DEJARLO
+                  
+       
             if(count($existenciaActaMaterial) >= 1) {
             
             }else{
@@ -289,9 +290,10 @@ class TecnicoController extends Controller
                 $materialActa->save(); 
     
             }  
-              
-           
         }
+        
+              
+                  
         
       
         return response(true);

@@ -57,9 +57,9 @@ Route::get('/', function () {
 //     return view('Panel.programacion');   
 // })->name('programacionVista');
 
-// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-//     return view('dashboard');
-// })->name('dashboard');
+ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+     return view('dashboard');
+})->name('dashboard');
 
 
 
@@ -75,8 +75,10 @@ Route::middleware(['auth:sanctum','verified'])->get('/Crm', [HomeController::cla
 //RUTAS DE CLIENTE//
 Route::middleware(['auth:sanctum','verified'])->get('/Crm/Clientes', [ClienteController::class,'index'])->name('clientesIndex');
 Route::middleware(['auth:sanctum','verified'])->get('/Crm/Clientes/crear', [ClienteController::class,'create'])->name('clientesCreate');
-Route::middleware(['auth:sanctum','verified'])->post('/Crm/Clientes/crear', [ClienteController::class,'store'])->name('clientesStore');
+Route::middleware(['auth:sanctum','verified'])->post('/Crm/Clientes/store', [ClienteController::class,'store'])->name('clientesStore');
+
 Route::middleware(['auth:sanctum','verified'])->get('/Crm/Clientes/ver/{id}', [ClienteController::class,'show'])->name('clientesShow');
+
 Route::middleware(['auth:sanctum','verified'])->get('/Crm/Clientes/edit/{id}', [ClienteController::class,'edit'])->name('clientesEdit');
 Route::middleware(['auth:sanctum','verified'])->post('/Crm/Clientes/edit/{id}', [ClienteController::class,'update'])->name('clientesUpdate');
 Route::middleware(['auth:sanctum','verified'])->post('/Crm/Clientes/insert/{id}', [ClienteController::class,'AggFile'])->name('AggFile');
@@ -98,6 +100,8 @@ Route::middleware(['auth:sanctum','verified'])->get('/Crm/Planes/edit/{id}', [Pl
 Route::middleware(['auth:sanctum','verified'])->post('/Crm/Planes/edit/{id}', [PlanController::class,'update'])->name('planUpdate');
 Route::middleware(['auth:sanctum','verified'])->delete('/Crm/Planes/eliminar/{id}', [PlanController::class,'delet'])->name('planDelet');
 Route::middleware(['auth:sanctum','verified'])->post('/ajax/storePlan', [PlanController::class,'updateAjax'])->name('updateAjax');
+Route::middleware(['auth:sanctum','verified'])->post('Crm/planes/planesExcel', [PlanController::class,'planesExcel'])->name('planesExcel');
+
 
 
 
@@ -171,7 +175,7 @@ Route::middleware(['auth:sanctum','verified'])->post('/Crm/tecnico/prestarEquipo
 
 // PROGRAMACION
 
-Route::middleware(['auth:sanctum','verified'])->get('Crm/programacion/index', [ProgramationController::class,'index'])->name('programacionIndex');
+Route::middleware(['auth:sanctum','verified'])->get('/Crm/programacion/index', [ProgramationController::class,'index'])->name('programacionIndex');
 Route::middleware(['auth:sanctum','verified'])->post('/programacion/guardar', [ProgramationController::class,'store'])->name('programacionStore');
 Route::middleware(['auth:sanctum','verified'])->get('/programacion/listar', [ProgramationController::class,'listar'])->name('programacionListar');
 Route::middleware(['auth:sanctum','verified'])->post('/programacion/modificar/{id}', [ProgramationController::class,'update'])->name('programacionUpdate');
@@ -185,9 +189,9 @@ Route::middleware(['auth:sanctum','verified'])->get('/programacion/listar/cola',
 
 // TIKETS
 Route::middleware(['auth:sanctum','verified'])->get('/Crm/tikects/index', [TikectController::class,'index'])->name('ticketsIndex');
-Route::middleware(['auth:sanctum','verified'])->post('/ticket/guardar', [TikectController::class,'store'])->name('tikectStore');
+Route::middleware(['auth:sanctum','verified'])->post('/Crm/ticket/guardar', [TikectController::class,'store'])->name('tikectStore');
 Route::middleware(['auth:sanctum','verified'])->get('/ticket/listar', [TikectController::class,'ticketNuevoListar'])->name('ticketNuevoListar');
-Route::middleware(['auth:sanctum','verified'])->get('/ticket/atender/{id}', [TikectController::class,'ticketAtender'])->name('ticketAsignadoListar');
+Route::middleware(['auth:sanctum','verified'])->get('/ticket/atender/{id}', [TikectController::class,'ticketAtender'])->name('ticketAtender');
 Route::middleware(['auth:sanctum','verified'])->get('/ticket/listar1', [TikectController::class,'ticketAsignadoListar'])->name('ticketAsignadoListar');
 Route::middleware(['auth:sanctum','verified'])->get('/ticket/listar3', [TikectController::class,'ticketListarAll'])->name('ticketListarAll');
 Route::middleware(['auth:sanctum','verified'])->get('/tikects/show/{id}', [TikectController::class,'show'])->name('ticketShow');
@@ -262,7 +266,7 @@ Route::middleware(['auth:sanctum','verified'])->get('/comentario/eliminar/{id}',
 
 
 // MATERIALES
-Route::middleware(['auth:sanctum','verified'])->post('/Crm/inventario/material/store', [MaterialController::class,'store'])->name('matrialStore');
+Route::middleware(['auth:sanctum','verified'])->post('/Crm/inventario/material/store', [MaterialController::class,'store'])->name('materialStore');
 Route::middleware(['auth:sanctum','verified'])->get('/Crm/inventario/material/listar', [MaterialController::class,'listar'])->name('materialListar');
 Route::middleware(['auth:sanctum','verified'])->get('/Crm/inventario/material/eliminar/{id}', [MaterialController::class,'destroy'])->name('materialEliminar');
 Route::middleware(['auth:sanctum','verified'])->post('/Crm/inventario/material/sumar', [MaterialController::class,'sumar'])->name('matrialSumar');

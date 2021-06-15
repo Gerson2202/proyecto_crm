@@ -39,7 +39,7 @@
       var datosP = new FormData(document.getElementById("formAgregarMaterial")); 
         $.ajax(
             {
-              url: "/Crm/Inventario/agregarMaterial", 
+              url: "{{route('agregarMaterial')}}", 
               type: "POST",
               data: datosP,
               processData: false,   //tell jQuery not to process the data
@@ -63,9 +63,15 @@
       console.log(user_id);
       
       //  consulta de id material
+      
+
+      let ruta1 = "{{ route('consultaIdmaterial', 'req_id') }}"
+
+      var ruta = ruta1.replace('req_id',data)
+
       $.ajax(
               {
-                url: "/Crm/Inventario/consultaIdmaterial/"+data, 
+                url: ruta, 
                 processData: false,   //tell jQuery not to process the data
                 contentType: false,    //tell jQuery not to set contentType
                   //a continuacion refrescar la tabla despues de un evento
@@ -79,8 +85,11 @@
                   }
       });   
       
+      // OBTENEMOS LOS DATOS Y LOS ENEVIO A ESTA FFUNCION
       function eviarIdmaterial(material_id,stock){
-        console.log(stock);
+       
+        
+
         $.ajax(
              {
                url: "/Crm/Inventario/eliminarMaterial/"+data+"/"+material_id+"/"+user_id+"/"+stock, 
@@ -98,11 +107,18 @@
  </script>
 
    <script> 
-      var idSalida=$('#txtIdSalida').val();         
+      var idSalida=$('#txtIdSalida').val();   
+
+      
+      let ruta1 = "{{ route('materialesLista', 'req_id') }}"
+      var ruta = ruta1.replace('req_id',idSalida)  
+
       let tableMateriales=$('#tablaMateriales').DataTable({
         "bPaginate": false, "bFilter": false, "bInfo": false,
+
+        
         'ajax' : {
-            'url' : "/Crm/Inventario/materiales/lista/"+idSalida,
+            'url' : ruta,
         },
         "columns": [
             {data: 'material.nombre'},

@@ -80,7 +80,7 @@
           <!-- /.col -->
           <div class="row">
               <div class="col-12">
-                 <button type="submit" class="btn  btn-dark btn-block">Iniciar Sesion</button>
+                 <button type="submit" dusk="login-button" class="btn  btn-dark btn-block">Iniciar Sesion</button>
               </div>
           </div>
           

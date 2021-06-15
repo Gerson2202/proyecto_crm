@@ -73,7 +73,7 @@
       editable: true,
       // llamar a un evento en este caso via ajax 
       events: {
-        url: '/programacion/listar',
+        url: "{{route('programacionListar')}}",
         method: 'GET',
         
         failure: function() {
@@ -122,7 +122,7 @@
     
     $.ajax(
       {
-        url: "/programacion/guardar", 
+        url: "{{route('programacionStore')}}",
         type: "POST",
         data: fd,
         processData: false,  // tell jQuery not to process the data
@@ -169,10 +169,11 @@
     fd.append("hora_inicial", hora_inicial);  
     fd.append("hora_final", hora_final);
     //  alert(titulo);
-      
+    let ruta1 = "{{ route('programacionUpdate', 'req_id') }}" 
+    var rutaM = ruta1.replace('req_id',id)
       $.ajax(
         {
-        url: "/programacion/modificar/"+id, 
+        url: rutaM, 
         type: "POST",
         data: fd,
         processData: false,   //tell jQuery not to process the data
@@ -219,14 +220,16 @@
                 })       
           
          })
+        //  FUNCION ELIMINAR PROGRAMACION
   function eliminar()
   {
    
     let id=$("#txtId").val();
-    
+    let ruta11 = "{{ route('programacionDelete', 'req_id') }}" 
+    var rutaE = ruta11.replace('req_id',id)
     $.ajax(
      {
-      url: "/programacion/eliminar/"+id, 
+      url: rutaE, 
       type: "GET",
       processData: false,   //tell jQuery not to process the data
       contentType: false, //tell jQuery not to set contentType

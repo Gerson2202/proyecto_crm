@@ -187,16 +187,21 @@
                    confirmButtonText: 'Si!'
                  }).then((result) => {
                    if (result.isConfirmed) {
+
+                    let ruta1 = "{{ route('contratoEliminar', 'req_id') }}" 
+                    var ruta = ruta1.replace('req_id',id)
+
                      $.ajax(
                        {
-                         url: "/Crm/Contrato/delet/"+id, 
+                         
+                         url: ruta, 
                          processData: false,  
                          contentType: false,    
                           
                          success: function(response){              
                            Swal.fire({
                                icon: 'success',
-                               title: 'Contrato Eliminado Eliminado',
+                               title: 'Contrato Eliminado ',
                                showConfirmButton: false,
                                timer: 700
                            }).then((result) => {
