@@ -100,3 +100,92 @@
       </form>
     </div>
   {{-- fin del modal --}}
+
+  {{-- card infformacion           --}}
+  <div class="col-lg-6 col-12">
+    <div class="card bg-info bg-disabled" id="cardDetalle" style="display: none">
+        <div class="card-header"><strong>Informacion</strong>  
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                  <i class="fas fa-minus"></i></button>
+                  <a href="#"  class="btn btn-tool btnEliminar" id="btnEliminar"  title="Remove"><i class="fas fa-trash-alt"></i></a>
+                  
+                <button type="button" class="btn btn-tool" id="btnEditar" data-toggle="modal" data-target="#modal-editar" title="Editar"><i class="fas fa-edit"></i></button>    
+              </div>
+        </div>
+        <div class="card-body">
+          <strong>Nombre:</strong><span id="spanNombre"></span>
+          <hr style="background: white">
+          <strong>Ubicacion:</strong><span id="spanUbicacion"></span>
+          <hr  style="background: white">
+          <strong>Coordenadas:</strong><span id="spanCoordenadas"></span>
+          <hr  style="background: white">
+          <strong>Descripcion:</strong><span id="spanDescripcion"></span>
+         
+          <hr  style="background: white" style="background: white">
+          <strong>Equipos:</strong><span id="spanEquipos" name="spanEquipos[]"></span>
+          <div  id="listado"></div>
+          <hr>
+        </div>
+    </div>
+  </div> 
+
+  {{-- MODAL EDITAR --}}
+  <div class="modal fade" id="modal-editar">                              
+            <form method="POST" id="formNodoUpdate">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title">Editar Nodo</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">                                                
+                      @csrf
+                      <div class="form-row">
+                        <div class="form-group col-md-4">
+                          <label for="exampleInputEmail1" class="form-label">Nombre</label>
+                          <input type="text" name="txtNombreEdit" id="txtNombreEdit" class="form-control" placeholder="Nombre de nodo" required>
+                          <div class="valid-feedback"> </div>                                   
+                        </div>
+                        <div class="form-group col-md-8 ">
+                          <label for="">Ubicacion</label>
+                          <input type="text" name="txtUbicacionEdit" id="txtUbicacionEdit" class="form-control" id="" placeholder="Direccion" required>
+                          <div class="valid-feedback"> </div>
+                        </div>
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label for="exampleInputEmail1" class="form-label">Coordenadas</label>
+                          <input type="text" name="txtCoordenadasEdit" id="txtCoordenadasEdit"  class="form-control" id="" placeholder="Digita Coordenadas" required>
+                          <div class="valid-feedback"> </div>                                   
+                        </div>
+                        <div class="form-group col-md-6 ">
+                          <label for="">Descripcion</label>
+                          <input type="text" name="txtDescripcionEdit" id="txtDescripcionEdit" class="form-control" id="" placeholder="añade una Descripcion" required>
+                          <div class="valid-feedback"> </div>
+                        </div>
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group col-md-12">
+                          <label for="exampleInputEmail1" class="form-label">Equipos</label>
+                          <select name="SelectEquiposEdit[]" id="selectEquiposEdit" multiple="multiple" class="custom-select"  style="width: 100%" required>
+                            @foreach ($equiposAll as $item)
+                                <option value="{{$item->id}}">{{$item->mac}}</option>
+                            @endforeach
+                            
+                          </select>
+                          <div class="valid-feedback"> </div>                                   
+                        </div>
+                      </div>                                              
+                                                                     
+                  </div>
+                  <div class="modal-footer justify-content-between">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                      <a href="#" id="btnUpdate" class="btn btn-primary">Modificar</a>
+                  </div>                                                   
+                </div>
+              </div>
+           </form>  
+  </div>

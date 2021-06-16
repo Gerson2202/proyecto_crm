@@ -36,6 +36,11 @@ class Equipo extends Model
     {
         return $this->belongsTo('App\Models\Tipoequipo');
     }
+
+    public function wimbox()
+    {
+        return $this->belongsTo('App\Models\Wimbox');
+    }
     // public function actaEquipo()
     // {
     //     return $this->hasMany('App\Models\ActaEquipo');

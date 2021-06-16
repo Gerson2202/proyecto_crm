@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Imports\EquipoImport;
 use App\Models\Tipoequipo;
+use App\Models\Wimbox;
 use Maatwebsite\Excel\Facades\Excel;
 
 class EquipoController extends Controller
@@ -124,7 +125,8 @@ class EquipoController extends Controller
         $nodos=Nodo::all();
         $sedes=Sede::all();
         $tipos=Tipoequipo::all();
-        return view('equipos.show',compact('equipo','facturas','clientes','nodos','sedes','tipos'));
+        $wimbox=Wimbox::all();
+        return view('equipos.show',compact('equipo','facturas','clientes','nodos','sedes','tipos','wimbox'));
     }
 
     
@@ -163,7 +165,7 @@ class EquipoController extends Controller
         // return $request;
         $nuevo=Equipo::findOrFail($id);                  
         $nuevo->ip=$request->ip;
-        $nuevo->winbox=$request->winbox;
+        $nuevo->wimbox_id=$request->winbox;
         $nuevo->ssid=$request->ssid;
         $nuevo->otro=$request->otro;
         $nuevo->save();

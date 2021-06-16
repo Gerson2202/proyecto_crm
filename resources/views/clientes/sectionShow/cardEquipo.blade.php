@@ -31,7 +31,12 @@
             <tbody>
               @foreach ($equipos as $equipo)
                <tr>
-                  <th scope="row"><a href="{{route('equipoShow',$equipo->id)}}" class="btn text-blue btn-sm">{{$equipo->nombre}}</a></th>
+                 @if ($equipo->tipoequipo_id!=null)
+                 <th scope="row"><a href="{{route('equipoShow',$equipo->id)}}" class="btn text-blue btn-sm">{{$equipo->tipoequipo->nombre}}</a></th>
+                 @else
+                 <th scope="row"><a href="{{route('equipoShow',$equipo->id)}}" class="btn text-blue btn-sm">No registrado</a></th>
+
+                 @endif
                   <th scope="row">{{$equipo->mac}}</th>
                   @if ($equipo->sede_id!=null)
                   <th scope="row">{{$equipo->sede->nombre}}</th>                                                                   
@@ -40,13 +45,17 @@
                   @endif
                   
                   <td>                                 
-                    <a href="#" ip={{$equipo->ip}} ssid={{$equipo->ssid}} winbox={{$equipo->winbox}} style="margin: 10px" class="verOperativa"><i class="fas fa-globe"></i></a>
+                    <a href="#" ip={{$equipo->ip}} ssid={{$equipo->ssid}}  @if ($equipo->wimbox_id!=null)
+                      winbox={{$equipo->wimbox->nombre}} 
+                      @else
+                      winbox="WimboxEliminado"  
+                      @endif style="margin: 10px" class="verOperativa"><i class="fas fa-globe"></i></a>
                   </td>
                </tr> 
               @endforeach                             
              
             </tbody>
-  
+           
             
            
          </TAble> 

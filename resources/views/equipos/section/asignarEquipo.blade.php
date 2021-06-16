@@ -13,12 +13,16 @@
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="validationServer01">winbox:</label>
-                        <select name="winbox" class="form-control"  required>                            
-                        <option value="{{old('nombre',$equipo->winbox)}}">{{old('nombre',$equipo->winbox)}}</option> 
-                        <option value="sancayetano">RB San cayetano</option>                                   
-                        <option value="cornejo"> RB Cornejo</option>
-                        <option value="oficina"> RB Oficina</option>   
-                        <option value="vista-hermosa">vista hermosa</option>                            
+                        <select name="winbox" class="form-control"  required> 
+                        @if ($equipo->sede_id!=null)
+                            <option value="{{old('nombre',$equipo->winbox)}}">{{old('nombre',$equipo->wimbox->nombre)}}</option> 
+                            @else
+                            <option value="{{old('nombre',$equipo->winbox)}}"></option> 
+                        @endif
+                        @foreach ($wimbox as $item)
+                        <option value="{{$item->id}}">{{$item->nombre}}</option> 
+                        @endforeach
+                                              
                         </select>
                     </div>
                     <div class="col-md-4 mb-3">

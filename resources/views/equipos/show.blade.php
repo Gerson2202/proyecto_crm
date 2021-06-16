@@ -28,7 +28,7 @@
               <h3 class="d-inline-block d-sm-none">LOWA Men’s Renegade GTX Mid Hiking Boots Review</h3>
               <div class="col-12">
                 <br>
-                <img src="{{asset($equipo->img)}}" class="product-image" alt="Product Image">
+                <img src="{{URL::asset('assets/img/router.jpg')}}" class="product-image" alt="Product Image">
                 {{-- <img class="card-img-top" src="{{asset($item->img)}}" alt="Card image"> --}}
 
               </div>
@@ -100,9 +100,13 @@
                         <i class="fas fa-globe"></i> {{$equipo->ip}}.
                         <span> <strong>IP</strong></span>
                       </h4>
-                      <h6>Winbox 
-                        <span class="mx-3"><strong> {{$equipo->winbox}}</strong></span>                                   
-                      </h6>
+                      @if ($equipo->wimbox_id!=null)
+                        <h6>Winbox 
+                          <span class="mx-3"><strong> {{$equipo->wimbox->nombre}}</strong></span>                                   
+                        </h6>
+                        @else
+                        <span class="mx-3"><strong> Wimbox eliminado</strong></span> 
+                      @endif                     
                       <h6>SSID
                         <span class="mx-3"><strong> {{$equipo->ssid}}</strong></span>                                   
                       </h6>

@@ -7,6 +7,7 @@ use App\Models\Equipo;
 use App\Models\Factura;
 use App\Models\Plan;
 use App\Models\Ticket;
+use App\Models\Wimbox;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -26,10 +27,11 @@ class DatabaseSeeder extends Seeder
         $this->call(MediosSeeder::class);
         $this->call(TipoequipoSeeder::class);
         
-        // Cliente::factory(10)->create();
-        // Equipo::factory(10)->create();
-        // Factura::factory(10)->create();
-        // Ticket::factory(10)->create();
+        // $this->call(WimboxSeeder::class);
+        // Cliente::factory(1000)->create();
+        // Equipo::factory(1000)->create();
+        // Factura::factory(1000)->create();
+        // Ticket::factory(1000)->create();
         
         // $this->call(PlanSeeder::class);
         // $this->call(MaterialSeeder::class);

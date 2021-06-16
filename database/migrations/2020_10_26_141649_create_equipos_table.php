@@ -31,14 +31,15 @@ class CreateEquiposTable extends Migration
             // $table->string('img')->nullable();
 
             $table->string('ip')->nullable();
-            $table->string('winbox')->nullable();
             $table->string('ssid')->nullable();
             $table->string('otro')->nullable();
             $table->unsignedBigInteger('cliente_id')->nullable();
             $table->unsignedBigInteger('nodo_id')->nullable();
 
             $table->unsignedBigInteger('sede_id')->nullable();
-            
+            $table->unsignedBigInteger('wimbox_id')->nullable();
+
+
             $table->foreign('cliente_id')
                         ->references('id')
                         ->on('clientes')
@@ -50,6 +51,11 @@ class CreateEquiposTable extends Migration
             $table->foreign('sede_id')
             ->references('id')
             ->on('sedes')
+            ->onDelete('set null');
+
+            $table->foreign('wimbox_id')
+            ->references('id')
+            ->on('wimboxes')
             ->onDelete('set null');
             $table->timestamps();
             

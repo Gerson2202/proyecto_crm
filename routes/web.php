@@ -33,6 +33,7 @@ use App\Http\Controllers\SalidaEquipoController;
 use App\Http\Controllers\SalidaTecnicoController;
 use App\Http\Controllers\SedeController;
 use App\Http\Controllers\TipoequipoController;
+use App\Http\Controllers\WimboxController;
 
 /*
 |--------------------------------------------------------------------------
@@ -278,3 +279,8 @@ Route::middleware(['auth:sanctum','verified'])->post('/Crm/inventario/material/u
 Route::middleware(['auth:sanctum','verified'])->post('/sede/guardar', [SedeController::class,'store'])->name('sedeStore');
 Route::middleware(['auth:sanctum','verified'])->get('/sede/listar', [SedeController::class,'listar'])->name('sedeListar');
 Route::middleware(['auth:sanctum','verified'])->get('/sede/eliminar/{id}', [SedeController::class,'destroy'])->name('sedeDelet');
+
+// WIMBOX
+Route::middleware(['auth:sanctum','verified'])->post('/wimbox/guardar', [WimboxController::class,'store'])->name('wimboxStore');
+Route::middleware(['auth:sanctum','verified'])->get('/wimbox/listar', [WimboxController::class,'listar'])->name('wimboxListar');
+Route::middleware(['auth:sanctum','verified'])->get('/wimbox/eliminar/{id}', [WimboxController::class,'destroy'])->name('wimboxDelet');
