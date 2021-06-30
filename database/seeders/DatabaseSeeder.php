@@ -27,11 +27,11 @@ class DatabaseSeeder extends Seeder
         $this->call(MediosSeeder::class);
         $this->call(TipoequipoSeeder::class);
         
-        // $this->call(WimboxSeeder::class);
-        // Cliente::factory(1000)->create();
-        // Equipo::factory(1000)->create();
-        // Factura::factory(1000)->create();
-        // Ticket::factory(1000)->create();
+         $this->call(WimboxSeeder::class);
+         Cliente::factory(500)->create();
+         Equipo::factory(500)->create();
+         Factura::factory(500)->create();
+         Ticket::factory(500)->create();
         
         // $this->call(PlanSeeder::class);
         // $this->call(MaterialSeeder::class);

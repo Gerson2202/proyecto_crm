@@ -210,6 +210,9 @@ class EquipoController extends Controller
     
      public function equiposexecel(Request $request)
      {
+        $request->validate([
+            'file'=>'required|mimes:xlsx'
+        ]);
          $file=$request->file('file');
          Excel::import(new EquipoImport, $file);
          return redirect()->route('equiposIndex')->with('mensaje','Datos Guardados');

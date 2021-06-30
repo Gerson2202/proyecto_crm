@@ -39,9 +39,9 @@
       <span class="info-box-icon bg-info"><i class="fas fa-globe"></i></span>
 
       <div class="info-box-content">
-        <span class="info-box-text">Planes Actuales</span>        
+        <span class="info-box-text text-info">Planes Actuales</span>        
         @foreach($clientePlan as $clientePlan)
-        <a href="{{route('planesEdit',$clientePlan->plan->id)}}"><span class="info-box-number text-dark mb-0">{{$clientePlan->plan->id_plan}}</span></a>    
+        <a href="{{route('planesEdit',$clientePlan->plan->id)}}"><span class="info-box-number text-dark mb-0">{{$clientePlan->plan->descripcion}}</span></a>    
         @endforeach  
       </div>
       <!-- /.info-box-content -->
@@ -54,7 +54,7 @@
       <span class="info-box-icon bg-success"><i class="fas fa-file-signature"></i></span>
 
       <div class="info-box-content">
-        <span class="info-box-text">Contratos</span>
+        <span class="info-box-text text-info">Contratos</span>
         @foreach($clienteContrato as $clienteContrato)        
         <a href="{{route('ContratosIndex')}}"><span class="info-box-number text-dark">{{$clienteContrato->cod_contrato}}</span></a>
         @endforeach

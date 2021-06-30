@@ -6,7 +6,7 @@
         <form action="" id="formAggSede">
           @csrf
           <div class="card-body">           
-            <input type="text" name="txtNombre" id="txtNombre" class="form-control" placeholder="Nombre"> 
+            <input type="text" name="txtNombre" id="txtNombre1" class="form-control" placeholder="Nombre"> 
             <br>
             
             <a href="#" onclick="AgregarSede()" class="btn btn-info btn-sm">Agregar </a>

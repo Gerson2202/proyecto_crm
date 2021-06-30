@@ -28,7 +28,7 @@
         eq.forEach(function(data,index)
         {
               var linea= document.createElement("li");                            
-              var contenido= document.createTextNode(data.nombre+"- MAC:" +data.mac);
+              var contenido= document.createTextNode(data.id+"- MAC:" +data.mac);
               listado.appendChild(linea);
               linea.appendChild(contenido);
         })

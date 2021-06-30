@@ -17,6 +17,6 @@
 <script src="https://cdn.datatables.net/responsive/2.2.6/js/responsive.bootstrap4.min.js"></script>
 
  {{-- para timezone --}}
- <script src="{{asset('vendor\moment.min.js')}}"></script> 
+ {{-- <script src="{{asset('vendor\moment.min.js')}}"></script>  --}}
  {{-- para multiples magenenes --}}
  <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.8.0/min/dropzone.min.js"></script>

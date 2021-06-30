@@ -33,7 +33,7 @@ class EquipoImport implements ToModel,WithValidation
             '2'=>['unique:equipos,mac'],
             '0'=>['unique:equipos,codigo'],
             '1'=>['unique:equipos,serial'],
-            
+            '5'=>['required'],
         ];
     }
 }

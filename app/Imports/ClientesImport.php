@@ -46,6 +46,10 @@ class ClientesImport implements ToModel,WithValidation
             return [
                 '0'=>['unique:clientes,ced'],
                 '3'=>['unique:clientes,correo'],
+                '5'=>['required'],
+                '6'=>['required'],
+                '7'=>['required'],
+                '8'=>['required'],
                 
             ];
         }

@@ -57,7 +57,7 @@
               <div class="icon">
                 <i class="ion ion-person"></i>
               </div>              
-              <a href="#" class="small-box-footer">Mas Informacion<i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{route('userIndex')}}" class="small-box-footer">Mas Informacion<i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col CLIENTES-->
@@ -195,11 +195,11 @@
     <script src="{{asset('vendor\jquery-ui-1.12.1\jquery-ui.min.js')}}"></script> 
     {{-- <script src="{{asset('jsmios/home/pluggin.js')}}"></script> --}}
     <!-- ChartJS  ESTADISTICAS-->
-    <script src="https://cdnjs.com/libraries/Chart.js"></script>
+    {{-- <script src="https://cdnjs.com/libraries/Chart.js"></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     {{-- JQMAP --}}
-    <script src="{{asset('assets\vendor\jqvmap\jquery.vmap.js')}}"></script>
-    <script src="{{asset('assets\vendor\jqvmap\maps\jquery-jvectormap-co-merc.js')}}"></script>
+    {{-- <script src="{{asset('assets\vendor\jqvmap\jquery.vmap.js')}}"></script>
+    <script src="{{asset('assets\vendor\jqvmap\maps\jquery-jvectormap-co-merc.js')}}"></script> --}}
 
 
   {{-- ESTADISTICAS --}}
@@ -246,7 +246,7 @@
       //   }
       // });
 
-       $('#vmap').vectorMap({map: 'co_merc'});
+      //  $('#vmap').vectorMap({map: 'co_merc'});
             
   </script>
 

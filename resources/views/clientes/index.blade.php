@@ -207,7 +207,7 @@
       <div class="div alert-danger">
         @foreach ($errors->all() as $item)
         <script>
-          toastr.error("Error! revisar que cedula o correo no existan");
+          toastr.error("Error! Revisar duplicidad en cedula y correo o el tipo de archivo no es el correcto");
         </script>  
         @endforeach
       </div>

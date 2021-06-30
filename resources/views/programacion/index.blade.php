@@ -134,6 +134,7 @@
    <script src="{{asset('vendor\lib\main.js')}}"></script>
    {{-- para español --}}
    <script src="{{asset('vendor\lib\locales\es.js')}}"></script> 
+   <script src="{{asset('vendor\moment.min.js')}}"></script>
  
 
     {{-- SELETC2 --}}

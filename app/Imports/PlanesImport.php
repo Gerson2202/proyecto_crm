@@ -6,6 +6,7 @@ use App\Models\Plan as ModelsPlan;
 use App\Plan;
 use Maatwebsite\Excel\Concerns\WithValidation;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Validators\Failure;
 
 class PlanesImport implements ToModel,WithValidation
 {
@@ -31,7 +32,11 @@ class PlanesImport implements ToModel,WithValidation
     public function rules(): array
     {
         return [
-            '0'=>['unique:plans,id_plan'],            
+            '0'=>['unique:plans,id_plan'], 
+            '5'=>['required'],
+            '4'=>['required'],
+            '5'=>['required'],
+            '6'=>['required'],           
         ];
     }
 }

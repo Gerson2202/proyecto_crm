@@ -134,6 +134,10 @@ class PlanController extends Controller
     
      public function planesExcel(Request $request)
      {
+        $request->validate([
+            'file'=>'required|mimes:xlsx'
+        ]);
+
          $file=$request->file('file');
          Excel::import(new PlanesImport, $file);
          return redirect()->route('planesIndex')->with('mensaje','Datos Guardados');

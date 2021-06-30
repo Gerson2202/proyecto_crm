@@ -125,7 +125,7 @@
            <div class="div alert-danger">
              @foreach ($errors->all() as $item)
              <script>
-               toastr.error("Error! revisar que el codigo no este duplicado.");
+               toastr.error("Error! revisar que el codigo no este duplicado o no estes cargando el archivo correcto.");
              </script>  
              @endforeach
            </div>

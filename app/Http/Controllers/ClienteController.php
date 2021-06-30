@@ -186,7 +186,9 @@ class ClienteController extends Controller
     
     public function clienteExecel(Request $request)
     {
-       
+        $request->validate([
+            'file'=>'required|mimes:xlsx'
+        ]);
 
         $file=$request->file('file');
         Excel::import(new ClientesImport, $file);
